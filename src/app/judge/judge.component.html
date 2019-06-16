@@ -1,0 +1,51 @@
+
+
+
+
+<form #messageForm="ngForm" (ngSubmit)="sendMessage(messageForm)">
+  
+
+  <label for="">Style</label>
+  <input
+    type="radio"
+    name="style"
+    ngModel
+    value="1"
+  />
+  <input
+    type="radio"
+    name="style"
+    ngModel
+    value="2"
+  />
+  <input
+    type="radio"
+    name="style"
+    ngModel
+    value="3"
+  />
+
+  <label for="">Skill</label>
+  <input
+    type="radio"
+    name="skill"
+    ngModel
+    value="1"
+  />
+  <input
+    type="radio"
+    name="skill"
+    ngModel
+    value="2"
+  />
+  <input
+    type="radio"
+    name="skill"
+    ngModel
+    value="3"
+  />
+
+
+  <button>Send</button>
+</form>
+

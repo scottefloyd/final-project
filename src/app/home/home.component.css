@@ -1,0 +1,31 @@
+
+#homepage {
+  margin-top: 25%;
+}
+
+#home-menu {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr 1fr;
+  
+}
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.home-links {
+  padding: 25px;
+  border-radius: 20px;
+  background-color: coral;
+  margin: 12px;
+  width: 130px;
+
+}
+
+a.home-links {
+  display: inline-block;
+  color: #fff;
+  font-size: 22px;
+  text-align: center;
+}
