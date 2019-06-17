@@ -1,0 +1,33 @@
+
+
+#organizer-section {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 3fr 1fr 2fr;
+  height: 100%;
+}
+
+#organizer-section > * {
+  align-self: center;
+  justify-self: center;
+}
+
+#next-button button, #start-stop-button button {
+  border-radius: 20px;
+  background-color: coral;
+  display: inline-block;
+  color: #fff;
+  font-size: 22px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+#start-stop-button button {
+  width: 300px;
+
+}
+
+#next-button button {
+  width: 200px;
+
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-organizer',
+  selector: 'organizer',
   templateUrl: './organizer.component.html',
   styleUrls: ['./organizer.component.css']
 })
