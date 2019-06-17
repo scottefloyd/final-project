@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import * as io from "socket.io-client";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class ChatService {
@@ -11,7 +12,7 @@ export class ChatService {
   private url = "http://localhost:3000";
   private socket;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient) {
     
     this.socket = io(this.url);
 
@@ -33,9 +34,15 @@ export class ChatService {
     });
   }
 
-  public inQueue(form) {
-    console.log("youre in queue");
+   addcompetitor(newCompetitor) {
+    console.log(newCompetitor);
+    return this.http.post(`${this.url}/api/competitors`, {player_name: newCompetitor, current_competitor: true}, {responseType: "json"});
+    
     
   }
+
+    getCompetitor() {
+      return this.http.get(`${this.url}/api/competitors`, { responseType: "json"});
+    }
 
 }

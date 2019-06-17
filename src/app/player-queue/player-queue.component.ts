@@ -7,12 +7,18 @@ import { ChatService } from '../chat.service';
   styleUrls: ['./player-queue.component.css']
 })
 export class PlayerQueueComponent implements OnInit {
-
+    competitors: any;
 
 
   constructor(private chatService: ChatService) { }
-
+  
+   
   ngOnInit() {
+  }
+
+  addcompetitor(form) {
+    this.chatService.addcompetitor(form.value);
+    form.reset();
   }
 
 }

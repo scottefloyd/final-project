@@ -1,0 +1,10 @@
+button {
+    width: 310px;
+    background-color: coral;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid coral;
+    margin-bottom: 10px;
+    height: 50px;
+
+}
