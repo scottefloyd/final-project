@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: column; 
+}
+
+.style, .skill, .originality, .effort{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 55px;
+    margin-top: 25px;
+    
+}
+
+button {
+    width: 310px;
+    background-color: coral;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid coral;
+    margin-bottom: 10px;
+    height: 50px;
+
+}
