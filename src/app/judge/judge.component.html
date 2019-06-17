@@ -1,268 +1,33 @@
 
 <form #messageForm="ngForm" (ngSubmit)="sendMessage(messageForm)">
-  
- 
+
+
 <label for="">Style</label>
-<div class ="buttonDiv">
-  <div class="style">
-  <input
-     type="radio"
-     name="style"
-     ngModel
-     value="1"
-  />1
-  <input
-     type="radio"
-     name="style"
-     ngModel
-     value="2"
-  />2
-  <input
-     type="radio"
-     name="style"
-     ngModel
-     value="3"
-  />3
-  <input
-     type="radio"
-     name="style"
-     ngModel
-     value="4"
-/>4
-  <input
-     type="radio"
-     name="style"
-     ngModel
-     value="5"
-/>5
-  <input
-     type="radio"
-     name="style"
-     ngModel
-     value="6"
-/>6
-
-  <input
-    type="radio"
-    name="style"
-    ngModel
-    value="7"
-/>7
-  <input
-    type="radio"
-    name="style"
-    ngModel
-    value="8"
-/>8
-  <input
-    type="radio"
-    name="style"
-    ngModel
-    value="9"
-/>9
-  <input
-    type="radio"
-    name="style"
-    ngModel
-    value="10"
-/>10
+<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="style"></mat-slider>
+<div class= "scale">
+  <p> 1</p> <p>10</p>
 </div>
+
 <label for="">Skill</label>
-<div class="skill">
-  <input
-     type="radio"
-     name="skill"
-     ngModel
-     value="1"
-  />1
-  <input
-    type="radio"
-    name="skill"
-    ngModel
-    value="2"
-  />2
-  <input
-    type="radio"
-    name="skill"
-    ngModel
-    value="3"
-  />3
-  <input
-     type="radio"
-     name="skill"
-     ngModel
-     value="4"
-  />4
-  <input
-    type="radio"
-    name="skill"
-    ngModel
-    value="5"
-  />5
-  <input
-    type="radio"
-    name="skill"
-    ngModel
-    value="6"
-  />6
-  <input
-     type="radio"
-     name="skill"
-     ngModel
-     value="7"
-  />7
-  <input
-    type="radio"
-    name="skill"
-    ngModel
-    value="8"
-  />8
-  <input
-    type="radio"
-    name="skill"
-    ngModel
-    value="9"
-  />9
-
-<input
-    type="radio"
-    name="skill"
-    ngModel
-    value="10"
-  />10
+<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="Skill" ></mat-slider>
+<div class= "scale">
+  <p> 1</p> <p>10</p>
   </div>
-  <label for="">Originality</label>
-   <div class="originality">
-  <input
-     type="radio"
-     name="Originality"
-     ngModel
-     value="1"
-  />1
-  <input
-    type="radio"
-    name="Originality"
-    ngModel
-    value="2"
-  />2
-  <input
-    type="radio"
-    name="Originality"
-    ngModel
-    value="3"
-  />3
-  <input
-     type="radio"
-     name="Originality"
-     ngModel
-     value="4"
-  />4
-  <input
-    type="radio"
-    name="Originality"
-    ngModel
-    value="5"
-  />5
-  <input
-    type="radio"
-    name="Originality"
-    ngModel
-    value="6"
-  />6
-  <input
-     type="radio"
-     name="Originality"
-     ngModel
-     value="7"
-  />7
-  <input
-    type="radio"
-    name="Originality"
-    ngModel
-    value="8"
-  />8
-  <input
-    type="radio"
-    name="Originality"
-    ngModel
-    value="9"
-  />9
 
-  <input
-    type="radio"
-    name="Originality"
-    ngModel
-    value="10"
-  />10
-</div>
 
-  <label for="">Effort</label>
-  <div class="effort">
-  <input
-     type="radio"
-     name="Effort"
-     ngModel
-     value="1"
-  />1
-  <input
-    type="radio"
-    name="Effort"
-    ngModel
-    value="2"
-  />2
-  <input
-    type="radio"
-    name="Effort"
-    ngModel
-    value="3"
-  />3
-  <input
-     type="radio"
-     name="Effort"
-     ngModel
-     value="4"
-  />4
-  <input
-    type="radio"
-    name="Effort"
-    ngModel
-    value="5"
-  />5
-  <input
-    type="radio"
-    name="Effort"
-    ngModel
-    value="6"
-  />6
-  <input
-     type="radio"
-     name="Effort"
-     ngModel
-     value="7"
-  />7
-  <input
-    type="radio"
-    name="Effort"
-    ngModel
-    value="8"
-  />8
-  <input
-    type="radio"
-    name="Effort"
-    ngModel
-    value="9"
-  />9
-
-  <input
-    type="radio"
-    name="Effort"
-    ngModel
-    value="10"
-  />10
-</div>
-</div>
+<label for="">Originality</label>
+<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="Originality"></mat-slider>
+  <div class= "scale">
+  <p> 1</p> <p>10</p>
+  </div>
   
+<label for="">Effort</label>
+  <mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="Effort"></mat-slider>
+  <div class= "scale">
+    <p> 1</p> <p>10</p>
+    </div>
 
-  <button>Send</button>
+
+<button>Send</button>
 </form>
 

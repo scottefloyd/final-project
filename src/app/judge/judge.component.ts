@@ -15,7 +15,7 @@ export class JudgeComponent implements OnInit {
 
    //pass along message value to our service
    sendMessage(form) {
-     console.log(form.value);
+     
      
     this.chatService.sendMessage(form.value);
     form.reset();
