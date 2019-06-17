@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../chat.service';
 
 @Component({
-  selector: 'app-player-queue',
+  selector: 'player-queue',
   templateUrl: './player-queue.component.html',
   styleUrls: ['./player-queue.component.css']
 })
 export class PlayerQueueComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(private chatService: ChatService) { }
 
   ngOnInit() {
   }

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import * as io from "socket.io-client";
 import { Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class ChatService {
@@ -10,8 +11,11 @@ export class ChatService {
   private url = "http://localhost:3000";
   private socket;
 
-  constructor() {
+  constructor(private router: Router) {
+    
     this.socket = io(this.url);
+
+    
   }
 
   //getting message from component and sends it to the server
@@ -28,4 +32,10 @@ export class ChatService {
       });
     });
   }
+
+  public inQueue(form) {
+    console.log("youre in queue");
+    
+  }
+
 }

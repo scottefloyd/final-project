@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-competitor',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompetitorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private chatService: ChatService) { }
 
   ngOnInit() {
+  }
+
+  joinQueue(form) {
+    this.chatService.inQueue(form.value);
+    console.log(form.value);
   }
 
 }

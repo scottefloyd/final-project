@@ -1,3 +1,10 @@
-<p>
-  competitor works!
-</p>
+
+
+<form #nameForm="ngForm" (ngSubmit)="joinQueue(nameForm)">
+  <label>Enter your name</label>
+  <input type="text" [(ngModel)]="name" name="name">
+  <section>
+    <player-queue></player-queue>
+  </section>
+  <button>Join the Boogie Down </button>
+</form>

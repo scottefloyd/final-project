@@ -20,7 +20,8 @@ const appRoutes: Routes = [
   { path: "judge", component: JudgeComponent },
   { path: "competitor", component: CompetitorComponent },
   { path: "audience", component: AudienceComponent },
-  { path: "results", component: ResultsComponent }
+  { path: "results", component: ResultsComponent },
+  { path: "player-queue", component: PlayerQueueComponent}
   
 
 ];
