@@ -12,6 +12,7 @@ function selectAll(res) {
 
 routes.get("/competitors", (req, res) => {
   selectAll(res);
+  
 });
 
 routes.post("/competitors", (req, res) => {
