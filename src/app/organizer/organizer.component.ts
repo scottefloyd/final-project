@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from "../chat.service";
 
 @Component({
   selector: 'organizer',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizerComponent implements OnInit {
 
-  constructor() { }
+  currentCompetitors: any;
+
+  constructor(private chatService: ChatService) {
+    this.chatService.setCurrentCompetitors =  this.currentCompetitors;
+   }
 
   ngOnInit() {
+
   }
+
+  startCompetition() {
+    
+    this.chatService.getCompetitors().subscribe(response => { 
+      this.currentCompetitors = response;
+      
+      
+    });
+  
+
+  }
+
 
 }
