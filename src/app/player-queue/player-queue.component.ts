@@ -16,9 +16,7 @@ export class PlayerQueueComponent implements OnInit {
     
     });
 
-
-  constructor(private chatService: ChatService) { }
-  
+  }
    
   ngOnInit() {
   }
@@ -28,6 +26,6 @@ export class PlayerQueueComponent implements OnInit {
     form.reset();
   }
 
-
+  }
    
 
