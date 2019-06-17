@@ -4,10 +4,13 @@ import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
+import {HttpClient} from "@angular/common/http"
+
 @Injectable()
-export class ChatService {
+export class ChatService {  
   messages = [];
   currentCompetitor: any; //when new competitor is up this is updated to update DB w/ scores
+  currentCompetitors = [];
 
   private url = "http://localhost:3000";
   private socket;
@@ -15,8 +18,16 @@ export class ChatService {
   constructor(private router: Router, private http: HttpClient) {
     
     this.socket = io(this.url);
+  }
 
-    
+  //getting array of current competitors
+  getCompetitors() {
+    return this.http.get(`${this.url}/api/competitors`, { responseType: "json" });
+
+  }
+
+  setCurrentCompetitors (currentlist) {
+    this.currentCompetitors = currentlist;
   }
 
   //getting message from component and sends it to the server
@@ -41,8 +52,15 @@ export class ChatService {
     
   }
 
+
     getCompetitor() {
       return this.http.get(`${this.url}/api/competitors`, { responseType: "json"});
     }
+
+  public addScores(newScore) {
+      return this.http.post("/api/competitor", newScore);
+    
+  }
+
 
 }
