@@ -3,12 +3,24 @@ form {
     flex-direction: column; 
 }
 
-.style, .skill, .originality, .effort{
+/* .style, .skill, .originality, .effort{
     display: flex;
     flex-direction: row;
     margin-bottom: 55px;
     margin-top: 25px;
     
+} */
+
+mat-slider{
+    height: 10px;
+}
+
+
+.scale{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 button {

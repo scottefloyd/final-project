@@ -12,6 +12,9 @@ import { AudienceComponent } from './audience/audience.component';
 import { ResultsComponent } from './results/results.component';
 import { PlayerQueueComponent } from './player-queue/player-queue.component';
 import { RouterModule, Routes } from "@angular/router";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSliderModule} from '@angular/material';
+
 
 const appRoutes: Routes = [ 
   { path: "", redirectTo: "/home", pathMatch: "full" }, 
@@ -42,7 +45,9 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatSliderModule
   ],
   providers: [ChatService],
   bootstrap: [AppComponent]
