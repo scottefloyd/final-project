@@ -1,8 +1,8 @@
 
 
-<form #nameForm="ngForm" (ngSubmit)="joinQueue(nameForm)">
-  <label>Enter your name</label>
-  <input type="text" [(ngModel)]="name" name="name">
+<form #nameForm="ngForm" (ngSubmit)="addNewCompetitor(nameForm)">
+  <label>Enter your name: </label>
+  <input type="text" ngModel name="name" />
   <section>
     <player-queue></player-queue>
   </section>
