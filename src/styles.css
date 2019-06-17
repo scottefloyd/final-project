@@ -13,6 +13,11 @@ body {
   
   
 }
+
+organizer {
+  height: 100%;
+  width: 100%;
+}
 .wrapper {
   min-height: 100%;
   display: grid;
