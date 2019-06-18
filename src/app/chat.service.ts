@@ -10,6 +10,8 @@ export class ChatService {
   currentCompetitors: any;
   currentPlayer: any;
   playerCount: number = 0;
+  totalScore: number = 0;
+  scoreArray: any;
 
   private url = "http://localhost:3000";
   private socket;
@@ -34,8 +36,6 @@ export class ChatService {
   getCurrentPlayer() {
     return this.currentPlayer;
 
-
-
   }
 
   setCurrentPlayer(current, count) {
@@ -46,7 +46,15 @@ export class ChatService {
 
   //getting message from component and sends it to the server
   public sendMessage(message) {
-    this.socket.emit("new-message", message);
+
+      this.scoreArray = Object.values(message);
+   
+    for (let i = 1; i < this.scoreArray.length; i++) {
+     
+         this.totalScore += this.scoreArray[i];
+    }
+   
+    this.socket.emit("new-message", this.totalScore);
   }
 
   //creating observable which gets the new message from the server which compents will subscribe
@@ -68,6 +76,8 @@ export class ChatService {
     return Observable.create(observer => {
       this.socket.on("new-player", message => {
         observer.next(message);
+        console.log(message);
+        
       });
     });
   }

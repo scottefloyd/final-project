@@ -17,10 +17,11 @@ export class AudienceComponent implements OnInit {
   //receives updates and pushes new messages to the messages array
   ngOnInit() {
     this.chatService.getMessages().subscribe(message => {
+
+      this.messages.push(message);
       console.log(message);
       
-      this.messages.push(message);
-      console.log(this.messages);
+    
     });
   }
 

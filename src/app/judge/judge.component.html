@@ -1,7 +1,7 @@
 
 
 <!-- it's not defined until next button is clicked -->
-<!-- <p> {{ currentPlayer.player_name }} </p> -->
+<p *ngIf="playerReady"> {{ currentPlayer.name }} </p>
 
 <form #messageForm="ngForm" (ngSubmit)="sendMessage(messageForm)">
 
@@ -12,20 +12,20 @@
 </div>
 
 <label for="">Skill</label>
-<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="Skill" ></mat-slider>
+<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="skill" ></mat-slider>
 <div class= "scale">
   <p> 1</p> <p>10</p>
   </div>
 
 
 <label for="">Originality</label>
-<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="Originality"></mat-slider>
+<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="originality"></mat-slider>
   <div class= "scale">
   <p> 1</p> <p>10</p>
   </div>
   
 <label for="">Effort</label>
-  <mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="Effort"></mat-slider>
+  <mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="effort"></mat-slider>
   <div class= "scale">
     <p> 1</p> <p>10</p>
     </div>
