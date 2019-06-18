@@ -14,7 +14,7 @@
 
 #next-button button, #start-stop-button button {
   border-radius: 20px;
-  background-color: coral;
+  /* background-color: coral; */
   display: inline-block;
   color: #fff;
   font-size: 22px;
