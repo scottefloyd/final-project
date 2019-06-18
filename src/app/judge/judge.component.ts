@@ -25,6 +25,12 @@ export class JudgeComponent implements OnInit {
 
    }
 
+  addcompetitor(form) {
+    // this.chatService.addcompetitor(form.value);
+    form.reset();
+  }
+
+
 
    //pass along message value to our service
    sendMessage(form) {

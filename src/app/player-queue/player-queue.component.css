@@ -1,45 +1,55 @@
-h1 {
+
+ 
+ .playercontainer{
+     display: flex;
+     flex-direction: column;
+     width: 250px;
+     
+ }
+ 
+ .competitors{
     display: flex;
-    justify-content: center;
-}
+    height: 175px;
+    width: 250px;
+    overflow: hidden;
+    
+ }
 
-
-p {
-    margin-right: 10px;
+p{
+    
+    font-size: 22px;
+    display: flex;
+    transform: translateX(26px);
     
 }
 
-.current {
-    height: 200px;
-    width: 200px;
-    background-color: aquamarine;
+.avatar {
     border-radius: 50%;
-    margin: 10px;
-    font-weight: bold;
-    text-align: center;
-}
-
-
-.next {
-    height: 200px;
-    width: 200px;
-    background-color: aquamarine;
-    border-radius: 50%;
-    margin: 10px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.queue {
-    display: flex;
+    background-color: yellow;
+    height: 100px;
+    width: 100px;
+    transform: translateX(-27px);
+    margin-right: 27px;
+    margin-left: 25px;
     
 }
 
-.competitors {
-    font-size: 15px;
-    font-weight: bold;
-    margin: 25px;
+.decknext {
     display: flex;
     flex-direction: row;
+    /* justify-content: space-between; */
+    transform: translateX(-10px);
+    
+}
+
+.next{
+    transform:translateX(102px);
+}
+
+h1{
+    display: flex;
     justify-content: center;
 }
+
+
+

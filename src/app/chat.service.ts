@@ -21,6 +21,7 @@ export class ChatService {
   //getting array of current competitors
   getCompetitors() {
 
+
     return this.http.get(`${this.url}/api/competitors`, {
       responseType: "json"
     });
@@ -32,6 +33,7 @@ export class ChatService {
 
   getCurrentPlayer() {
     return this.currentPlayer;
+
 
 
   }
