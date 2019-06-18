@@ -1,13 +1,12 @@
 <h1>Player Queue</h1>
 
-<div class="queue">
-  <div class="current">Current</div>
-
-  <div class="next">Next</div>
+<div class="decknext">
+<p class="deck">On deck</p>
+<p class="next">Next</p>
 </div>
-
-
-<div *ngFor="let currentCompetitor of currentCompetitors; index as i" class="competitors">
-  <p>{{currentCompetitor.player_name}}</p>
+<div class="competitors">
+  <div class="playercontainer" *ngFor="let competitor of currentCompetitors; index as i">
+    <div class="avatar"></div>
+    <p>{{ competitor.player_name }}</p>
+  </div>
 </div>
-
