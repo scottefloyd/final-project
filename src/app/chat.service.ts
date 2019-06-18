@@ -70,7 +70,17 @@ export class ChatService {
     });
   }
 
-// <<<<<<< dance-styling
+  addcompetitor(newCompetitor) {
+    //console.log(newCompetitor);
+    return this.http.post(
+      `${this.url}/api/competitors`,
+      { player_name: newCompetitor, current_competitor: true },
+      { responseType: "json" }
+    );
+  }
+
+
+  // <<<<<<< dance-styling
 //     getCompetitor() {
       
 //       return this.http.get(`${this.url}/api/competitors`, { responseType: "json"});
@@ -87,15 +97,6 @@ export class ChatService {
 //   }
 
 // =======
-  addcompetitor(newCompetitor) {
-    //console.log(newCompetitor);
-    return this.http.post(
-      `${this.url}/api/competitors`,
-      { player_name: newCompetitor, current_competitor: true },
-      { responseType: "json" }
-    );
-  }
-
   // public addScores(newScore) {
   //     return this.http.post("/api/competitor", newScore);
 

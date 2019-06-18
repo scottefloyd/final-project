@@ -17,8 +17,5 @@ export class PlayerQueueComponent implements OnInit {
 
   ngOnInit() {}
 
-  addCompetitor(form) {
-    this.chatService.addCompetitor(form.value);
-    form.reset();
-  }
+ 
 }
