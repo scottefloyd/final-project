@@ -10,10 +10,12 @@ export class CompetitorComponent implements OnInit {
   competitors: any;
 
   constructor(private chatService: ChatService) { }
+
   // this.chatService.getcompetitor().subscribe(response => {
   //   this.competitors = response;
   //   console.log(this.competitors)
   // });
+  
   ngOnInit() {
   }
 
