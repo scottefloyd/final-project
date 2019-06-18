@@ -12,7 +12,9 @@ export class OrganizerComponent implements OnInit {
   currentPlayer: any;
   playerCount: number = 0;
 
+
   constructor(private chatService: ChatService) { }
+
 
   ngOnInit() {
     this.chatService.getCompetitors().subscribe(response => {
@@ -36,5 +38,6 @@ export class OrganizerComponent implements OnInit {
     
   }
 
+  
 
 }

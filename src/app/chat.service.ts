@@ -20,6 +20,7 @@ export class ChatService {
 
   //getting array of current competitors
   getCompetitors() {
+
     return this.http.get(`${this.url}/api/competitors`, {
       responseType: "json"
     });
@@ -31,6 +32,7 @@ export class ChatService {
 
   getCurrentPlayer() {
     return this.currentPlayer;
+
 
   }
 
@@ -57,6 +59,7 @@ export class ChatService {
 
   sendPlayer(player) {
     this.socket.emit("new-player", player);
+
   }
 
   getPlayer() {
@@ -67,6 +70,23 @@ export class ChatService {
     });
   }
 
+// <<<<<<< dance-styling
+//     getCompetitor() {
+      
+//       return this.http.get(`${this.url}/api/competitors`, { responseType: "json"});
+
+//     }
+
+//     public addScores(newScore) {
+//       return this.http.post("/api/competitor", newScore);
+    
+//   }
+
+//   removePlayer() {
+//     this.currentCompetitors.shift();
+//   }
+
+// =======
   addcompetitor(newCompetitor) {
     //console.log(newCompetitor);
     return this.http.post(
@@ -78,6 +98,7 @@ export class ChatService {
 
   // public addScores(newScore) {
   //     return this.http.post("/api/competitor", newScore);
+
 
   // }
 }

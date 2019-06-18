@@ -20,7 +20,7 @@ export class CompetitorComponent implements OnInit {
   }
 
   addNewCompetitor(form) {
-    this.chatService.addcompetitor(form.value.name).subscribe(response => {
+    this.chatService.addCompetitor(form.value.name).subscribe(response => {
       this.competitors = response;
     });
     
