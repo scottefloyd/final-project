@@ -13,8 +13,8 @@ export class JudgeComponent implements OnInit {
   ngOnInit() {
   }
 
-  addcompetitor(form) {
-    this.chatService.addcompetitor(form.value);
+  addCompetitor(form) {
+    this.chatService.addCompetitor(form.value);
     form.reset();
   }
 

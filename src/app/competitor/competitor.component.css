@@ -1,10 +1,31 @@
 button {
-    width: 310px;
-    background-color: coral;
-    border-radius: 5px;
-    color: white;
-    border: 1px solid coral;
-    margin-bottom: 10px;
-    height: 50px;
+  width: 310px;
+  background-color: plum;
+  border-radius: 20px;
+  color: white;
+  border: 1px solid plum;
+  margin-bottom: 15px;
+  height: 50px;
+  font-size: 22px;
+}
 
+form {
+  margin-top: 25%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: auto;
+  text-align: center;
+}
+
+input {
+  height: 35px;
+  width: 300px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+label {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }

@@ -1,0 +1,45 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+
+p {
+    margin-right: 10px;
+    
+}
+
+.current {
+    height: 200px;
+    width: 200px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    margin: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.next {
+    height: 200px;
+    width: 200px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    margin: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.queue {
+    display: flex;
+    
+}
+
+.competitors {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

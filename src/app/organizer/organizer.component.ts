@@ -11,8 +11,11 @@ export class OrganizerComponent implements OnInit {
   currentCompetitors: any;
 
   constructor(private chatService: ChatService) {
-    this.chatService.setCurrentCompetitors =  this.currentCompetitors;
-   }
+    this.chatService.getCompetitors().subscribe(response => {
+      this.currentCompetitors = response;
+      console.log(this.currentCompetitors);
+    });
+  }
 
   ngOnInit() {
 
@@ -29,5 +32,6 @@ export class OrganizerComponent implements OnInit {
 
   }
 
+  
 
 }

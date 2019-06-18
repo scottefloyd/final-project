@@ -21,6 +21,7 @@ export class ChatService {
 
   //getting array of current competitors
   getCompetitors() {
+
     return this.http.get(`${this.url}/api/competitors`, { responseType: "json" });
 
   }
@@ -44,7 +45,7 @@ export class ChatService {
     });
   }
 
-   addcompetitor(newCompetitor) {
+   addCompetitor(newCompetitor) {
     console.log(newCompetitor);
     return this.http.post(`${this.url}/api/competitors`, {player_name: newCompetitor, current_competitor: true}, {responseType: "json"});
     
@@ -53,12 +54,18 @@ export class ChatService {
 
 
     getCompetitor() {
+      
       return this.http.get(`${this.url}/api/competitors`, { responseType: "json"});
+
     }
 
-  public addScores(newScore) {
+    public addScores(newScore) {
       return this.http.post("/api/competitor", newScore);
     
+  }
+
+  removePlayer() {
+    this.currentCompetitors.shift();
   }
 
 
