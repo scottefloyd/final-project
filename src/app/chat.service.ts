@@ -4,33 +4,48 @@ import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
-
 @Injectable()
-export class ChatService {  
+export class ChatService {
   messages = [];
-  currentCompetitor: any; //when new competitor is up this is updated to update DB w/ scores
-  currentCompetitors = [];
+  currentCompetitors: any;
+  currentPlayer: any;
+  playerCount: number = 0;
 
   private url = "http://localhost:3000";
   private socket;
 
   constructor(private router: Router, private http: HttpClient) {
-    
     this.socket = io(this.url);
   }
 
   //getting array of current competitors
   getCompetitors() {
-    
-    return this.http.get(`${this.url}/api/competitors`, { responseType: "json" });
+
+
+    return this.http.get(`${this.url}/api/competitors`, {
+      responseType: "json"
+    });
   }
 
-  setCurrentCompetitors (currentlist) {
-    this.currentCompetitors = currentlist;
+  setCurrentCompetitors(competitors) {
+    this.currentCompetitors = competitors;
+  }
+
+  getCurrentPlayer() {
+    return this.currentPlayer;
+
+
+
+  }
+
+  setCurrentPlayer(current, count) {
+    this.currentPlayer = current;
+    this.playerCount = count;
+    //console.log(this.currentPlayer);
   }
 
   //getting message from component and sends it to the server
-  public sendMessage(message) {    
+  public sendMessage(message) {
     this.socket.emit("new-message", message);
   }
 
@@ -44,22 +59,49 @@ export class ChatService {
     });
   }
 
-   addcompetitor(newCompetitor) {
-    console.log(newCompetitor);
-    return this.http.post(`${this.url}/api/competitors`, {player_name: newCompetitor, current_competitor: true}, {responseType: "json"});
-    
-    
+  sendPlayer(player) {
+    this.socket.emit("new-player", player);
+
+  }
+
+  getPlayer() {
+    return Observable.create(observer => {
+      this.socket.on("new-player", message => {
+        observer.next(message);
+      });
+    });
+  }
+
+  addcompetitor(newCompetitor) {
+    //console.log(newCompetitor);
+    return this.http.post(
+      `${this.url}/api/competitors`,
+      { player_name: newCompetitor, current_competitor: true },
+      { responseType: "json" }
+    );
   }
 
 
-    getCompetitor() {
-      return this.http.get(`${this.url}/api/competitors`, { responseType: "json"});
-    }
+  // <<<<<<< dance-styling
+//     getCompetitor() {
+      
+//       return this.http.get(`${this.url}/api/competitors`, { responseType: "json"});
 
-  public addScores(newScore) {
-      return this.http.post("/api/competitor", newScore);
+//     }
+
+//     public addScores(newScore) {
+//       return this.http.post("/api/competitor", newScore);
     
-  }
+//   }
+
+//   removePlayer() {
+//     this.currentCompetitors.shift();
+//   }
+
+// =======
+  // public addScores(newScore) {
+  //     return this.http.post("/api/competitor", newScore);
 
 
+  // }
 }

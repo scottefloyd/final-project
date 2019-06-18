@@ -21,6 +21,12 @@ io.on('connection', (socket) => {
   });
 });
 
+io.on('connection', (socket) => {
+  socket.on("new-player", message => {
+    io.emit("new-player", message);
+  });
+});
+
 
 server.listen(port, () => {
   console.log(`started on port: ${port}`);
