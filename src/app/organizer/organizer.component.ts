@@ -31,6 +31,8 @@ export class OrganizerComponent implements OnInit {
   }
 
   nextPlayer() {
+    let clearArray = [];
+    this.chatService.clearCurrentScores(clearArray);
     this.currentPlayer = this.currentCompetitors[this.playerCount];
     this.chatService.sendPlayer(this.currentPlayer);
     this.playerCount++;

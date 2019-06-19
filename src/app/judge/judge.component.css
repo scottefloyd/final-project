@@ -1,4 +1,5 @@
 form {
+    padding: 20px 0 25px 0;
     display: flex;
     flex-direction: column; 
 }
@@ -15,25 +16,25 @@ mat-slider{
     height: 10px;
 }
 
-
 .scale{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
-form .scale label {
+form label {
 
-    text-align: center;
+    text-align: center !important;
 }
 
 button {
     width: 310px;
     /* background-color: coral; */
-    border-radius: 5px;
+    border-radius: 20px;
     color: white;
-    border: 1px solid coral;
+    border: none;
+    font-size: 22px;
     margin-bottom: 10px;
     height: 50px;
 

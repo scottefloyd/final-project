@@ -12,6 +12,7 @@ export class ChatService {
   playerCount: number = 0;
   totalScore: number = 0;
   scoreArray: any;
+  currentScores: string[] = [];
 
   private url = "http://localhost:3000";
   private socket;
@@ -22,7 +23,6 @@ export class ChatService {
 
   //getting array of current competitors
   getCompetitors() {
-
 
     return this.http.get(`${this.url}/api/competitors`, {
       responseType: "json"
@@ -35,30 +35,42 @@ export class ChatService {
 
   getCurrentPlayer() {
     return this.currentPlayer;
-
   }
 
   setCurrentPlayer(current, count) {
     this.currentPlayer = current;
     this.playerCount = count;
-    //console.log(this.currentPlayer);
+  }
+
+  clearCurrentScores(clear) {
+    console.log("heezy");
+    
+    this.currentScores = clear;
+    
+    
   }
 
   //getting message from component and sends it to the server
   public sendMessage(message) {
 
-      this.scoreArray = Object.values(message);
+    this.currentScores.push(message);
+    //console.log(this.currentScores);
+
+    this.scoreArray = Object.values(message);
    
     for (let i = 1; i < this.scoreArray.length; i++) {
      
          this.totalScore += this.scoreArray[i];
     }
+    let scoreObject = [this.totalScore, ...message];
+
+    console.log(scoreObject);
+    
    
-    this.socket.emit("new-message", this.totalScore);
+    this.socket.emit("new-message", scoreObject);
   }
 
-  //creating observable which gets the new message from the server which compents will subscribe
-  //to to receive updates
+  //creating observable which gets the new message from the server which compents will subscribe to receive updates
   public getMessages() {
     return Observable.create(observer => {
       this.socket.on("new-message", message => {
@@ -69,21 +81,17 @@ export class ChatService {
 
   sendPlayer(player) {
     this.socket.emit("new-player", player);
-
   }
 
   getPlayer() {
     return Observable.create(observer => {
       this.socket.on("new-player", message => {
         observer.next(message);
-        console.log(message);
-        
       });
     });
   }
 
   addcompetitor(newCompetitor) {
-    //console.log(newCompetitor);
     return this.http.post(
       `${this.url}/api/competitors`,
       { player_name: newCompetitor, current_competitor: true },
