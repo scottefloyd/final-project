@@ -18,23 +18,12 @@ export class JudgeComponent implements OnInit {
   ngOnInit() {
     this.chatService.getPlayer().subscribe(message => {
       this.currentPlayer = { name: message.player_name, ...message };
-      console.log(this.currentPlayer);
+      //console.log(this.currentPlayer);
       if (this.currentPlayer.name) {
         this.playerReady = true;
       }
     });
-
-
    }
-
-// <<<<<<< organizer-data-fix
-// =======
-//   addcompetitor(form) {
-//     // this.chatService.addcompetitor(form.value);
-//     form.reset();
-//   }
-
-
 
    //pass along message value to our service
    sendMessage(form) {

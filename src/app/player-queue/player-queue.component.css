@@ -4,7 +4,6 @@
      display: flex;
      flex-direction: column;
      width: 250px;
-     
  }
  
  .competitors{
@@ -15,8 +14,7 @@
     
  }
 
-p{
-    
+p {
     font-size: 22px;
     display: flex;
     transform: translateX(26px);
@@ -25,7 +23,7 @@ p{
 
 .avatar {
     border-radius: 50%;
-    background-color: yellow;
+    background-color: gray;
     height: 100px;
     width: 100px;
     transform: translateX(-27px);
@@ -46,9 +44,8 @@ p{
     transform:translateX(102px);
 }
 
-h1{
-    display: flex;
-    justify-content: center;
+h2{
+   text-align: center;
 }
 
 

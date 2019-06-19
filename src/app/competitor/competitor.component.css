@@ -1,16 +1,15 @@
 button {
   width: 310px;
-  background-color: plum;
+  border: none;
   border-radius: 20px;
   color: white;
-  border: 1px solid plum;
   margin-bottom: 15px;
   height: 50px;
   font-size: 22px;
 }
 
 form {
-  margin-top: 25%;
+  margin-top: 10%;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row: auto;
