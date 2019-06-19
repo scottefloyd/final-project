@@ -13,6 +13,7 @@ export class ChatService {
   totalScore: number = 0;
   scoreArray: any;
   currentScores: string[] = [];
+  judgeCounter: number = 0;
 
   private url = "http://localhost:3000";
   private socket;
@@ -52,7 +53,7 @@ export class ChatService {
 
   //getting message from component and sends it to the server
   public sendMessage(message) {
-
+    this.judgeCounter++;
     this.currentScores.push(message);
     //console.log(this.currentScores);
 
@@ -60,9 +61,9 @@ export class ChatService {
    
     for (let i = 1; i < this.scoreArray.length; i++) {
      
-         this.totalScore += this.scoreArray[i];
+         this.totalScore += this.scoreArray[i] ;
     }
-    let scoreObject = [this.totalScore, ...message];
+    let scoreObject = [this.totalScore / this.judgeCounter, ...message];
 
     console.log(scoreObject);
     
