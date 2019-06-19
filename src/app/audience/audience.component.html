@@ -1,9 +1,20 @@
 <h2>Scores</h2>
 
-<p *ngFor="let message of messages">
-  
-    Player: {{ message.player_name }}
+<!-- <div *ngFor="let player of allPlayerScores">  -->
 
-    Style: {{message.style}} Skill: {{message.skill}} 
-    Originality: {{message.originality}}
-    Effort: {{message.effort}}</p>
+
+  <div *ngIf="gameOver">
+    <p>{{ gameOver }}</p>
+    <p>View the final results here: ___</p>
+  </div>
+  <div *ngFor="let player of allPlayerScores" *ngIf="playerReady" [hidden]="gameOver">
+    <p>Player: {{ player.player_name }}</p>
+    <p>Style: {{ player.style }}</p>
+    <p>Skill: {{ player.skill }}</p>
+    <p>Originality: {{ player.originality }}</p>
+    <p>Effort: {{ player.effort }}</p>
+    <p>Total Score: {{ player.totalscore }}</p>=
+  </div>
+
+
+ <!-- </div>  -->

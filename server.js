@@ -17,7 +17,17 @@ app.use("/api", routes)
 //socket.on receives new messages and then calls a function to send back the same message
 io.on('connection', (socket) => {
   socket.on("new-message", message => {
-    io.emit("new-message", message);
+    finalScores.push(message);
+    // console.log(finalScores);
+    io.emit("new-message", finalScores);
+  });
+});
+
+const finalScores = [];
+
+io.on('connection', (socket) => {
+  socket.on("current-scores", message => {
+    io.emit("current-scores", message);
   });
 });
 
@@ -27,6 +37,26 @@ io.on('connection', (socket) => {
   });
 });
 
+io.on('connection', (socket) => {
+  socket.on("all-scores", message => {
+
+    // console.log(message);
+    
+    io.emit("all-scores", message);
+  });
+});
+
+io.on('connection', (socket) => {
+  socket.on("game-over", message => {
+    io.emit("game-over", message);
+  });
+});
+
+io.on('connection', (socket) => {
+  socket.on("clear-scores", message => {
+    io.emit("clear-scores", message);
+  });
+});
 
 server.listen(port, () => {
   console.log(`started on port: ${port}`);

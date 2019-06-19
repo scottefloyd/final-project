@@ -9,20 +9,34 @@ import { ChatService } from "../chat.service";
 export class AudienceComponent implements OnInit {
 
   messages: string[] = [];
+  playerReady: any = false;
+  message: any;
+  gameOver: any;
+  allPlayerScores: [];
 
   constructor(private chatService: ChatService) { }
 
 
-  //this subscribes to the service observable which provides updates when it 
-  //receives updates and pushes new messages to the messages array
+  //maybe rethink how we build this message and emit it to the component.
   ngOnInit() {
     this.chatService.getMessages().subscribe(message => {
-
-      this.messages.push(message);
       //console.log(message);
-      
-    
+      this.message = message;
+      this.messages.push(message);
+      if (this.messages) {
+        this.playerReady = true;
+      }
     });
+    this.chatService.getgameOver().subscribe(message => {
+      this.gameOver = message;
+    });
+
+    this.chatService.getAllScoreData().subscribe(response => {
+      this.allPlayerScores = response[response.length - 1];
+      console.log(this.allPlayerScores); //this is just returning and array of player score objects
+      this.chatService.getAllScores(this.allPlayerScores);
+    }); 
+    
   }
 
 }
