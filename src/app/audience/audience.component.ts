@@ -19,10 +19,10 @@ export class AudienceComponent implements OnInit {
     this.chatService.getMessages().subscribe(message => {
 
       this.messages.push(message);
-      //console.log(message);
+      console.log(this.messages);
       
     
-    });
+    }); 
   }
 
 }
