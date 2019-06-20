@@ -21,6 +21,7 @@ export class ChatService {
   judgeCounter: number = 0;
   averageScore: any;
 
+
   private url = "http://localhost:3000";
   private socket;
 
@@ -73,6 +74,7 @@ export class ChatService {
     this.scoreArray = Object.values(score);
 
     for (let i = 1; i < this.scoreArray.length; i++) {
+
       this.totalScore += this.scoreArray[i];
     }
 

@@ -38,6 +38,13 @@ export class AudienceComponent implements OnInit {
       this.chatService.getAllScores(this.allPlayerScores);
     }); 
     
+//from Master merge
+  //    this.messages.push(message);
+   //   console.log(this.messages);
+      
+    
+    }); 
+
   }
 
 }
