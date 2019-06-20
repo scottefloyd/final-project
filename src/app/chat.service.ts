@@ -16,7 +16,7 @@ export class ChatService {
   scoreObject: any;
   gameover: string;
   allPlayerScores: any[] = [];
-  //totalScores: any;
+  totalScores: any;
   allScoreObjects: any[] = [];
   judgeCounter: number = 0;
   averageScore: any;
@@ -68,7 +68,8 @@ export class ChatService {
 
     this.judgeCounter++;
     //these are not being used
-    
+    this.currentScores.push(score);
+    this.socket.emit("current-scores", this.currentScores);
    
     this.scoreArray = Object.values(score);
 
@@ -96,6 +97,15 @@ export class ChatService {
       });
     }
 
+
+  //this is not currently sending to Audience
+  public getScoreData() {
+    return Observable.create(observer => {
+      this.socket.on("current-scores", message => {
+        observer.next(message);
+      });
+    });
+  }
 
   sendPlayer(player) {
     this.socket.emit("new-player", player);
@@ -129,18 +139,18 @@ export class ChatService {
     });
   }
 
-    // setTotalScores(scores) {
-  //   this.totalScores = scores;
-  // }
+    setTotalScores(scores) {
+    this.totalScores = scores;
+  }
 
    //next button
-  //  addPlayerSession() {
-  //     this.allPlayerScores.push(this.totalScores);
-  //     this.socket.emit("all-scores", this.allPlayerScores);
-  //     console.log(this.totalScores);
-  //     this.totalScores = [];
+   addPlayerSession() {
+      this.allPlayerScores.push(this.totalScores);
+      this.socket.emit("all-scores", this.allPlayerScores);
+      console.log(this.totalScores);
+      this.totalScores = [];
 
-  // }
+  }
 
   // getAllScoreData() {
   //   return Observable.create(observer => {
