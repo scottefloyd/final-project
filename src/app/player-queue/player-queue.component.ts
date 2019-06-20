@@ -6,6 +6,20 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
   selector: "player-queue",
   templateUrl: "./player-queue.component.html",
   styleUrls: ["./player-queue.component.css"],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: `translateX(400px)`})),
+      transition(':enter', [
+        style({transform:'translateX(500px)'}),
+        animate(2000)
+      ]),
+      transition('*=>void', [
+        
+        animate(100)
+      ])
+    ])
+    
+  ]
 
 })
 export class PlayerQueueComponent implements OnInit {
