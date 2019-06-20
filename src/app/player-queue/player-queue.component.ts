@@ -26,13 +26,24 @@ export class PlayerQueueComponent implements OnInit {
   currentCompetitors: any;
 
   constructor(private chatService: ChatService) {
-    this.chatService.getCompetitors().subscribe(response => {
-      this.currentCompetitors = response;
 
+    this.chatService.displayCurrentCompetitors().subscribe(response => {
+      this.currentCompetitors = response;        
     });
+
+
+    // this.chatService.getCompetitors().subscribe(response => {
+    //   this.currentCompetitors = response;
+
+    // });
+
+
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    
+  }
 
  
 }
