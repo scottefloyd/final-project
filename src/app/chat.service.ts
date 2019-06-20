@@ -16,7 +16,7 @@ export class ChatService {
   scoreObject: any;
   gameover: string;
   allPlayerScores: any[] = [];
-  totalScores: any;
+  //totalScores: any;
   allScoreObjects: any[] = [];
   judgeCounter: number = 0;
   averageScore: any;
@@ -68,8 +68,7 @@ export class ChatService {
 
     this.judgeCounter++;
     //these are not being used
-    this.currentScores.push(score);
-    this.socket.emit("current-scores", this.currentScores);
+    
    
     this.scoreArray = Object.values(score);
 
@@ -97,39 +96,6 @@ export class ChatService {
       });
     }
 
-  setTotalScores(scores) {
-    this.totalScores = scores;
-  }
-
-   //next button
-   addPlayerSession() {
-   
-      //console.log(this.currentScores);
-      
-      this.allPlayerScores.push(this.totalScores);
-
-      this.socket.emit("all-scores", this.allPlayerScores);
-      console.log(this.totalScores);
-      this.totalScores = [];
-
-  }
-
-  getAllScoreData() {
-    return Observable.create(observer => {
-      this.socket.on("all-scores", message => {
-        observer.next(message);
-      });
-    });
-  }
-
-  //this is not currently sending to Audience
-  public getScoreData() {
-    return Observable.create(observer => {
-      this.socket.on("current-scores", message => {
-        observer.next(message);
-      });
-    });
-  }
 
   sendPlayer(player) {
     this.socket.emit("new-player", player);
@@ -163,23 +129,25 @@ export class ChatService {
     });
   }
 
-  // clearCurrentScores() {
-  //   this.currentScores = [];
-  //   this.socket.emit("clear-scores", this.currentScores);
+    // setTotalScores(scores) {
+  //   this.totalScores = scores;
   // }
 
-  // setCurrentCompetitors(competitors) {
-  //   this.currentCompetitors = competitors;
+   //next button
+  //  addPlayerSession() {
+  //     this.allPlayerScores.push(this.totalScores);
+  //     this.socket.emit("all-scores", this.allPlayerScores);
+  //     console.log(this.totalScores);
+  //     this.totalScores = [];
+
   // }
 
-  // getCurrentPlayer() {
-  //   return this.currentPlayer;
+  // getAllScoreData() {
+  //   return Observable.create(observer => {
+  //     this.socket.on("all-scores", message => {
+  //       observer.next(message);
+  //     });
+  //   });
   // }
-
-  // setCurrentPlayer(current, count) {
-  //   this.currentPlayer = current;
-  //   this.playerCount = count;
-  // }
-
 
 }

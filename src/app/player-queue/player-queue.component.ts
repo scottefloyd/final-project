@@ -11,7 +11,7 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
       state('in', style({ transform: `translateX(400px)`})),
       transition(':enter', [
         style({transform:'translateX(500px)'}),
-        animate(2000)
+        animate(1000)
       ]),
       transition('*=>void', [
         

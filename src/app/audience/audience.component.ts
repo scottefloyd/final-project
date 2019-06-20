@@ -16,13 +16,9 @@ export class AudienceComponent implements OnInit {
 
   constructor(private chatService: ChatService) { }
 
-
-  //maybe rethink how we build this message and emit it to the component.
   ngOnInit() {
     this.chatService.getMessages().subscribe(message => {
       this.messages = message;
-       console.log(message);
-      //this.messages.push(message);
       if (this.messages) {
         this.playerReady = true;
       }
@@ -31,19 +27,7 @@ export class AudienceComponent implements OnInit {
       this.gameOver = message;
     });
 
-    this.chatService.getAllScoreData().subscribe(response => {
-      // this.allPlayerScores = response[response.length - 1];
-      this.allPlayerScores = response;
-      //console.log(this.allPlayerScores); 
-      this.chatService.getAllScores(this.allPlayerScores);
-    }); 
-    
-//from Master merge
-  //    this.messages.push(message);
-   //   console.log(this.messages);
-      
-    
-
+ 
 
   }
 
