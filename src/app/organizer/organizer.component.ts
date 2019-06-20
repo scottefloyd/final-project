@@ -37,15 +37,15 @@ export class OrganizerComponent implements OnInit {
       this.currentCompetitors = response;    
     });
 
-    this.chatService.getScoreData().subscribe(response => {
-      this.currentScores = response;
-      this.chatService.getCurrentScores(this.currentScores);      
-    });
-
     this.chatService.getMessages().subscribe(message => {
-      //console.log(message);
       this.message = message;
       this.chatService.setTotalScores(this.message);
+
+        //created this to send current scores to service
+    // this.chatService.getScoreData().subscribe(response => {
+    //   this.currentScores = response;
+    //   this.chatService.getCurrentScores(this.currentScores);      
+    // });
 
       //this.messages.push(message);
       // if (this.messages) {
@@ -70,16 +70,8 @@ export class OrganizerComponent implements OnInit {
     this.currentPlayer = this.currentCompetitors[this.playerCount];
     this.chatService.sendPlayer(this.currentPlayer);
     this.playerCount++;
-
-    //this.chatService.setCurrentPlayer(this.currentPlayer, this.playerCount);
-
     this.chatService.addPlayerSession();
-
-    //this.chatService.clearCurrentScores();
   }
 
-   // this.chatService.getClearScores().subscribe(response => {
-    //   this.currentScores = response;
-    //   this.chatService.getClearScores();      
-    // });
+   
 }
