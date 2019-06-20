@@ -97,30 +97,6 @@ export class ChatService {
       });
     }
 
-  setTotalScores(scores) {
-    this.totalScores = scores;
-  }
-
-   //next button
-   addPlayerSession() {
-   
-      //console.log(this.currentScores);
-      
-      this.allPlayerScores.push(this.totalScores);
-
-      this.socket.emit("all-scores", this.allPlayerScores);
-      console.log(this.totalScores);
-      this.totalScores = [];
-
-  }
-
-  getAllScoreData() {
-    return Observable.create(observer => {
-      this.socket.on("all-scores", message => {
-        observer.next(message);
-      });
-    });
-  }
 
   //this is not currently sending to Audience
   public getScoreData() {
@@ -163,23 +139,25 @@ export class ChatService {
     });
   }
 
-  // clearCurrentScores() {
-  //   this.currentScores = [];
-  //   this.socket.emit("clear-scores", this.currentScores);
-  // }
+    setTotalScores(scores) {
+    this.totalScores = scores;
+  }
 
-  // setCurrentCompetitors(competitors) {
-  //   this.currentCompetitors = competitors;
-  // }
+   //next button
+   addPlayerSession() {
+      this.allPlayerScores.push(this.totalScores);
+      this.socket.emit("all-scores", this.allPlayerScores);
+      console.log(this.totalScores);
+      this.totalScores = [];
 
-  // getCurrentPlayer() {
-  //   return this.currentPlayer;
-  // }
+  }
 
-  // setCurrentPlayer(current, count) {
-  //   this.currentPlayer = current;
-  //   this.playerCount = count;
+  // getAllScoreData() {
+  //   return Observable.create(observer => {
+  //     this.socket.on("all-scores", message => {
+  //       observer.next(message);
+  //     });
+  //   });
   // }
-
 
 }
