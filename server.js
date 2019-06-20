@@ -25,11 +25,11 @@ io.on('connection', (socket) => {
 
 const finalScores = [];
 
-// io.on('connection', (socket) => {
-//   socket.on("current-scores", message => {
-//     io.emit("current-scores", message);
-//   });
-// });
+io.on('connection', (socket) => {
+  socket.on("current-scores", message => {
+    io.emit("current-scores", message);
+  });
+});
 
 io.on('connection', (socket) => {
   socket.on("new-player", message => {
@@ -38,7 +38,10 @@ io.on('connection', (socket) => {
 });
 
 io.on('connection', (socket) => {
-  socket.on("all-scores", message => {    
+  socket.on("all-scores", message => {
+
+     console.log(message);
+    
     io.emit("all-scores", message);
   });
 });

@@ -12,7 +12,7 @@ export class ChatService {
   playerCount: number = 0;
   totalScore: number = 0;
   scoreArray: any;
-  //currentScores: any[] = [];
+  currentScores: any[] = [];
   scoreObject: any;
   gameover: string;
   allPlayerScores: any[] = [];
@@ -60,12 +60,16 @@ export class ChatService {
     this.allPlayerScores = allscores;
   }
 
+  getCurrentScores(scores) {
+    this.currentScores = scores;
+  }
+
   public sendScore(score) {
 
     this.judgeCounter++;
     //these are not being used
-    // this.currentScores.push(score);
-    // this.socket.emit("current-scores", this.currentScores);
+    this.currentScores.push(score);
+    this.socket.emit("current-scores", this.currentScores);
    
     this.scoreArray = Object.values(score);
 
@@ -119,13 +123,13 @@ export class ChatService {
   }
 
   //this is not currently sending to Audience
-  // public getScoreData() {
-  //   return Observable.create(observer => {
-  //     this.socket.on("current-scores", message => {
-  //       observer.next(message);
-  //     });
-  //   });
-  // }
+  public getScoreData() {
+    return Observable.create(observer => {
+      this.socket.on("current-scores", message => {
+        observer.next(message);
+      });
+    });
+  }
 
   sendPlayer(player) {
     this.socket.emit("new-player", player);
@@ -159,7 +163,6 @@ export class ChatService {
     });
   }
 
-  
   // clearCurrentScores() {
   //   this.currentScores = [];
   //   this.socket.emit("clear-scores", this.currentScores);

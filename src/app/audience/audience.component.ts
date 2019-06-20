@@ -31,14 +31,19 @@ export class AudienceComponent implements OnInit {
       this.gameOver = message;
     });
 
-    //not being used
-    // this.chatService.getAllScoreData().subscribe(response => {
-    //   // this.allPlayerScores = response[response.length - 1];
-    //   this.allPlayerScores = response;
-    //   //console.log(this.allPlayerScores); 
-    //   this.chatService.getAllScores(this.allPlayerScores);
-    // }); 
-  
+    this.chatService.getAllScoreData().subscribe(response => {
+      // this.allPlayerScores = response[response.length - 1];
+      this.allPlayerScores = response;
+      //console.log(this.allPlayerScores); 
+      this.chatService.getAllScores(this.allPlayerScores);
+    }); 
+    
+//from Master merge
+  //    this.messages.push(message);
+   //   console.log(this.messages);
+      
+    
+
 
   }
 
