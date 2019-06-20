@@ -1,5 +1,5 @@
 <div id="organizer-section">
-  <h1>Organize a Battle</h1>
+  <h1>Start a Battle</h1>
 
   <section>
     <player-queue></player-queue>
@@ -8,7 +8,9 @@
 
   <div id="next-button"><button (click)="nextPlayer()">Next Player</button></div>
 
-
-  <div id="start-stop-button"><button (click)="startCompetition()">Start/Stop Competition</button></div>
-  <button (click)="stopComp()">STOP</button>
+  <div id="start-stop">
+    <div id="start-button"><button (click)="startCompetition()">START</button></div>
+    <div id="stop-button"><button (click)="stopComp()">STOP</button></div>
+  </div>
+ 
 </div>

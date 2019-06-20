@@ -7,14 +7,27 @@
     <p>{{ gameOver }}</p>
     <p>View the final results here: ___</p>
   </div>
-  <div *ngFor="let player of allPlayerScores" *ngIf="playerReady" [hidden]="gameOver">
+  <!-- <div *ngFor="let player of allPlayerScores" *ngIf="playerReady" [hidden]="gameOver">
     <p>Player: {{ player.player_name }}</p>
     <p>Style: {{ player.style }}</p>
     <p>Skill: {{ player.skill }}</p>
     <p>Originality: {{ player.originality }}</p>
     <p>Effort: {{ player.effort }}</p>
     <p>Total Score: {{ player.totalscore }}</p>=
-  </div>
+  </div> -->
+
+  <p  *ngFor="let message of messages" [hidden]="gameOver">
+  
+    Player: {{ message.player_name }}
+
+    Style: {{message.style}} Skill: {{message.skill}} 
+    Originality: {{message.originality}}
+    Effort: {{message.effort}}
+  
+    Total Score: {{ message.totalscore }}
+    Average Score: {{ message.average }}
+  </p>
+    
 
 
  <!-- </div>  -->

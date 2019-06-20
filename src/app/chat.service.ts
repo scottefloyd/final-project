@@ -16,6 +16,10 @@ export class ChatService {
   scoreObject: any;
   gameover: string;
   allPlayerScores: any[] = [];
+  totalScores: any;
+  allScoreObjects: any[] = [];
+  judgeCounter: number = 0;
+  averageScore: any;
 
   private url = "http://localhost:3000";
   private socket;
@@ -24,24 +28,10 @@ export class ChatService {
     this.socket = io(this.url);
   }
 
-  //getting array of current competitors
   getCompetitors() {
     return this.http.get(`${this.url}/api/competitors`, {
       responseType: "json"
     });
-  }
-
-  setCurrentCompetitors(competitors) {
-    this.currentCompetitors = competitors;
-  }
-
-  getCurrentPlayer() {
-    return this.currentPlayer;
-  }
-
-  setCurrentPlayer(current, count) {
-    this.currentPlayer = current;
-    this.playerCount = count;
   }
 
   stopComp() {
@@ -57,26 +47,12 @@ export class ChatService {
     });
   }
 
-  clearCurrentScores() {
-    this.currentScores = [];
-    this.socket.emit("clear-scores", this.currentScores);
-  }
-
   public getClearScores() {
     return Observable.create(observer => {
       this.socket.on("clear-scores", message => {
         observer.next(message);
       });
     });
-  }
-
-
-  //next button
-  addPlayerSession() {
-    if (this.playerCount > 1) {
-      this.allPlayerScores.push(this.currentScores);
-      this.socket.emit("all-scores", this.allPlayerScores);
-    } 
   }
 
   getAllScores(allscores) {
@@ -87,21 +63,53 @@ export class ChatService {
     this.currentScores = scores;
   }
 
-  //getting message from component and sends it to the server
-  public sendMessage(message) {
+  public sendScore(score) {
 
-    this.currentScores.push(message);
-
+    this.judgeCounter++;
+    //these are not being used
+    this.currentScores.push(score);
     this.socket.emit("current-scores", this.currentScores);
    
+    this.scoreArray = Object.values(score);
 
-    this.scoreArray = Object.values(message);
     for (let i = 1; i < this.scoreArray.length; i++) {
       this.totalScore += this.scoreArray[i];
     }
-    this.scoreObject = { totalscore: this.totalScore, ...message };
 
-    this.socket.emit("new-message", this.scoreObject);
+    this.averageScore = this.totalScore/this.judgeCounter;
+
+    this.scoreObject = { average: this.averageScore, totalscore: this.totalScore, ...score };
+
+    this.allScoreObjects.push(this.scoreObject);
+
+    this.socket.emit("total-scores", this.allScoreObjects);
+    console.log(this.allScoreObjects);
+    
+  }
+
+    public getMessages() {
+      return Observable.create(observer => {
+        this.socket.on("total-scores", message => {
+          observer.next(message);
+        });
+      });
+    }
+
+  setTotalScores(scores) {
+    this.totalScores = scores;
+  }
+
+   //next button
+   addPlayerSession() {
+   
+      //console.log(this.currentScores);
+      
+      this.allPlayerScores.push(this.totalScores);
+
+      this.socket.emit("all-scores", this.allPlayerScores);
+      console.log(this.totalScores);
+      this.totalScores = [];
+
   }
 
   getAllScoreData() {
@@ -110,21 +118,12 @@ export class ChatService {
         observer.next(message);
       });
     });
-
   }
 
+  //this is not currently sending to Audience
   public getScoreData() {
     return Observable.create(observer => {
       this.socket.on("current-scores", message => {
-        observer.next(message);
-      });
-    });
-  }
-
-  //creating observable which gets the new message from the server which compents will subscribe to receive updates
-  public getMessages() {
-    return Observable.create(observer => {
-      this.socket.on("new-message", message => {
         observer.next(message);
       });
     });
@@ -150,25 +149,35 @@ export class ChatService {
     );
   }
 
-  // <<<<<<< dance-styling
-  //     getCompetitor() {
+  loadCurrentCompetitors(competitors) {
+    this.socket.emit("load-competitors", competitors);
+  }
 
-  //       return this.http.get(`${this.url}/api/competitors`, { responseType: "json"});
+  displayCurrentCompetitors() {
+    return Observable.create(observer => {
+      this.socket.on("load-competitors", message => {
+        observer.next(message);
+      });
+    });
+  }
 
-  //     }
-
-  //     public addScores(newScore) {
-  //       return this.http.post("/api/competitor", newScore);
-
-  //   }
-
-  //   removePlayer() {
-  //     this.currentCompetitors.shift();
-  //   }
-
-  // =======
-  // public addScores(newScore) {
-  //     return this.http.post("/api/competitor", newScore);
-
+  // clearCurrentScores() {
+  //   this.currentScores = [];
+  //   this.socket.emit("clear-scores", this.currentScores);
   // }
+
+  // setCurrentCompetitors(competitors) {
+  //   this.currentCompetitors = competitors;
+  // }
+
+  // getCurrentPlayer() {
+  //   return this.currentPlayer;
+  // }
+
+  // setCurrentPlayer(current, count) {
+  //   this.currentPlayer = current;
+  //   this.playerCount = count;
+  // }
+
+
 }
