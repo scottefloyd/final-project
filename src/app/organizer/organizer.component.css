@@ -12,7 +12,11 @@
   justify-self: center;
 }
 
-#next-button button, #start-stop-button button {
+#start-stop {
+  display: flex;
+}
+
+#next-button button, #start-button button, #stop-button button {
   border-radius: 20px;
   /* background-color: coral; */
   display: inline-block;
@@ -22,10 +26,21 @@
   padding: 10px 0;
 }
 
-#start-stop-button button {
-  width: 300px;
-
+#start-button button, #stop-button button {
+  width: 150px;
+  margin: 0 10px;
 }
+
+/* #start-button button {
+  margin-right: 20px;
+  background-color: Green;
+}
+
+#stop-button button {
+  margin-right: 20px;
+  background-color: red;
+} */
+
 
 #next-button button {
   width: 200px;

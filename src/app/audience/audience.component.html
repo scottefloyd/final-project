@@ -1,7 +1,8 @@
 <h2>Scores</h2>
 
 
-<div *ngFor="let message of messages; index as i">
+
+<!-- <div *ngFor="let message of messages; index as i">
 <p> {{ message.player_name }}</p>
 <p>Style: {{ message.style }}<p>
 <p>Skill: {{ message.skill }}<p>
@@ -16,7 +17,7 @@
 [options]="myOptions"
 [title]="myTitle"> 
 </google-chart>
-</div>
+</div> -->
 
 <!-- <google-chart 
 [type]="myType"
@@ -25,4 +26,45 @@
 [options]="myOptions"
 [title]="myTitle"> 
 </google-chart>  -->
+<!-- <div *ngFor="let player of allPlayerScores">  -->
+
+
+  <div *ngIf="gameOver">
+    <p>{{ gameOver }}</p>
+    <p>View the final results here: ___</p>
+  </div>
+  <!-- <div *ngFor="let player of allPlayerScores" *ngIf="playerReady" [hidden]="gameOver">
+    <p>Player: {{ player.player_name }}</p>
+    <p>Style: {{ player.style }}</p>
+    <p>Skill: {{ player.skill }}</p>
+    <p>Originality: {{ player.originality }}</p>
+    <p>Effort: {{ player.effort }}</p>
+    <p>Total Score: {{ player.totalscore }}</p>=
+
+  </div> -->
+
+  <p  *ngFor="let message of messages" [hidden]="gameOver">
+  
+    Player: {{ message.player_name }}
+
+    Style: {{message.style}} Skill: {{message.skill}} 
+    Originality: {{message.originality}}
+    Effort: {{message.effort}}
+  
+    Total Score: {{ message.totalscore }}
+    Average Score: {{ message.average }}
+    
+    <google-chart 
+    [type]="myType"
+    [data]="myData"
+  [columnNames]="myColumnNames"
+[options]="myOptions"
+[title]="myTitle"> 
+</google-chart>
+  </p>
+    
+
+
+ <!-- </div>  -->
+
 

@@ -16,6 +16,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material';
 import { GoogleChartsModule } from 'angular-google-charts';
 
+
+
 const appRoutes: Routes = [ 
   { path: "", redirectTo: "/home", pathMatch: "full" }, 
   { path: "home", component: HomeComponent },
