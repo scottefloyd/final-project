@@ -1,6 +1,12 @@
 
 #homepage {
-  margin-top: 25%;
+  margin-top: 18%;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 25px;
+  width: 328px;
 }
 
 #home-menu {
@@ -20,6 +26,7 @@ h2 {
   background-color: #df2a91;
   margin: 12px;
   width: 90px;
+  justify-self: center;
 
 }
 

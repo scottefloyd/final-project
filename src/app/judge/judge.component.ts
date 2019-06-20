@@ -26,7 +26,7 @@ export class JudgeComponent implements OnInit {
    }
 
    //pass along message value to our service
-   sendMessage(form) {
+   submitScore(form) {
    
     this.playerScore = {
       player_name: this.currentPlayer.player_name,
@@ -36,7 +36,8 @@ export class JudgeComponent implements OnInit {
       effort: form.value.effort
      }
 
-     this.chatService.sendMessage(this.playerScore);  
+     this.chatService.sendScore(this.playerScore); 
+      
     form.reset();
   }
 
