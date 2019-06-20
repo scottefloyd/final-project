@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
+
 @Injectable()
 export class ChatService {
   messages = [];
@@ -86,6 +87,7 @@ export class ChatService {
 
     this.socket.emit("total-scores", this.allScoreObjects);
     console.log(this.allScoreObjects);
+
     
   }
 
