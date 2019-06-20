@@ -43,7 +43,7 @@ export class AudienceComponent implements OnInit {
    //   console.log(this.messages);
       
     
-    }); 
+
 
   }
 
