@@ -1,10 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from "../chat.service";
+import {trigger, state, style, animate, transition} from '@angular/animations';
 
 @Component({
   selector: 'organizer',
   templateUrl: './organizer.component.html',
-  styleUrls: ['./organizer.component.css']
+  styleUrls: ['./organizer.component.css'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: `translateX(0)`})),
+      transition('void =>*', [
+        style({transform:'translateX(25px)'}),
+        animate(2000)
+      ]),
+      transition('*=>void', [
+        animate(100)
+      ])
+    ])
+    
+  ]
 })
 export class OrganizerComponent implements OnInit {
 

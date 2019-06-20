@@ -16,6 +16,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material';
 
 
+
+
 const appRoutes: Routes = [ 
   { path: "", redirectTo: "/home", pathMatch: "full" }, 
   { path: "home", component: HomeComponent },
