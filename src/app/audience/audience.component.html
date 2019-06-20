@@ -2,11 +2,27 @@
 
 
 <div *ngFor="let message of messages; index as i">
-<p>Player: {{ message[1].player_name }}</p>
-<p>Style: {{ message[1].style }}<p>
-<p>Skill: {{ message[1].skill }}<p>
-<p>Originality: {{ message[1].originality }} </p>
-<p>Effort: {{ message[1].effort }}</p>
-<p>Total score: {{ message[0]}} </p>
-
+<p> {{ message.player_name }}</p>
+<p>Style: {{ message.style }}<p>
+<p>Skill: {{ message.skill }}<p>
+<p>Originality: {{ message.originality }} </p>
+<p>Effort: {{ message.effort }}</p>
+<p>Average: {{ message.average}} </p>
+<p>Total Score: {{message.total}}</p>
+<google-chart 
+[type]="myType"
+[data]="myData"
+[columnNames]="myColumnNames"
+[options]="myOptions"
+[title]="myTitle"> 
+</google-chart>
 </div>
+
+<!-- <google-chart 
+[type]="myType"
+[data]="myData2"
+[columnNames]="myColumnNames"
+[options]="myOptions"
+[title]="myTitle"> 
+</google-chart>  -->
+

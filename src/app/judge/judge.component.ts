@@ -29,7 +29,7 @@ export class JudgeComponent implements OnInit {
    sendMessage(form) {
    
     this.playerScore = {
-      player_name: this.currentPlayer.player_name,
+      player_name: this.currentPlayer.name,
       style: form.value.style,
       skill: form.value.skill,
       originality: form.value.originality,
