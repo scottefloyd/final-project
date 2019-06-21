@@ -14,7 +14,7 @@ import { PlayerQueueComponent } from './player-queue/player-queue.component';
 import { RouterModule, Routes } from "@angular/router";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material';
-import { GoogleChartsModule } from 'angular-google-charts';
+
 
 
 
@@ -49,8 +49,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MatSliderModule,
-    GoogleChartsModule.forRoot()
+    MatSliderModule
   ],
   providers: [ChatService],
   bootstrap: [AppComponent]

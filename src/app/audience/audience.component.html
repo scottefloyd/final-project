@@ -1,31 +1,6 @@
 <h2>Scores</h2>
 
 
-
-<!-- <div *ngFor="let message of messages; index as i">
-<p> {{ message.player_name }}</p>
-<p>Style: {{ message.style }}<p>
-<p>Skill: {{ message.skill }}<p>
-<p>Originality: {{ message.originality }} </p>
-<p>Effort: {{ message.effort }}</p>
-<p>Average: {{ message.average}} </p>
-<p>Total Score: {{message.total}}</p>
-<google-chart 
-[type]="myType"
-[data]="myData"
-[columnNames]="myColumnNames"
-[options]="myOptions"
-[title]="myTitle"> 
-</google-chart>
-</div> -->
-
-<!-- <google-chart 
-[type]="myType"
-[data]="myData2"
-[columnNames]="myColumnNames"
-[options]="myOptions"
-[title]="myTitle"> 
-</google-chart>  -->
 <!-- <div *ngFor="let player of allPlayerScores">  -->
 
 
@@ -40,7 +15,6 @@
     <p>Originality: {{ player.originality }}</p>
     <p>Effort: {{ player.effort }}</p>
     <p>Total Score: {{ player.totalscore }}</p>=
-
   </div> -->
 
   <p  *ngFor="let message of messages" [hidden]="gameOver">
@@ -53,18 +27,9 @@
   
     Total Score: {{ message.totalscore }}
     Average Score: {{ message.average }}
-    
-    <google-chart 
-    [type]="myType"
-    [data]="myData"
-  [columnNames]="myColumnNames"
-[options]="myOptions"
-[title]="myTitle"> 
-</google-chart>
   </p>
     
 
 
  <!-- </div>  -->
-
 

@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use("/api", routes)
 
-//socket.on receives new messages and then calls a function to send back the same message
+
 io.on('connection', (socket) => {
   socket.on("total-scores", message => {
     //finalScores.push(message);
@@ -25,11 +25,6 @@ io.on('connection', (socket) => {
 
 const finalScores = [];
 
-io.on('connection', (socket) => {
-  socket.on("current-scores", message => {
-    io.emit("current-scores", message);
-  });
-});
 
 io.on('connection', (socket) => {
   socket.on("new-player", message => {
