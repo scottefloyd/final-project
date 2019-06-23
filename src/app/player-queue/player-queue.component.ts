@@ -42,6 +42,11 @@ export class PlayerQueueComponent implements OnInit {
 
   ngOnInit() {
 
+    this.chatService.getCurrentPlayers().subscribe(response => {
+      this.currentCompetitors = response;
+      //console.log(response);
+           
+    });
     
   }
 
