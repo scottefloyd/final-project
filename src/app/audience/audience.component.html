@@ -1,70 +1,28 @@
 <h2>Scores</h2>
 
+<div id="results" *ngFor="let competitor of competitors" [hidden]="gameOver">
+  <div class="result-thumbnail"></div>
+  <div class="result-chart">
 
+    <p>Style: {{ competitor.avg_style }}</p>
+    <p>Skill: {{ competitor.avg_skill }}</p>
+    <p>Originality: {{ competitor.avg_originality }}</p>
+    <p>Effort: {{ competitor.avg_effort }}</p>
+  
 
-<!-- <div *ngFor="let message of messages; index as i">
-<p> {{ message.player_name }}</p>
-<p>Style: {{ message.style }}<p>
-<p>Skill: {{ message.skill }}<p>
-<p>Originality: {{ message.originality }} </p>
-<p>Effort: {{ message.effort }}</p>
-<p>Average: {{ message.average}} </p>
-<p>Total Score: {{message.total}}</p>
-<google-chart 
-[type]="myType"
-[data]="myData"
-[columnNames]="myColumnNames"
-[options]="myOptions"
-[title]="myTitle"> 
-</google-chart>
-</div> -->
-
-<!-- <google-chart 
-[type]="myType"
-[data]="myData2"
-[columnNames]="myColumnNames"
-[options]="myOptions"
-[title]="myTitle"> 
-</google-chart>  -->
-<!-- <div *ngFor="let player of allPlayerScores">  -->
-
-
-  <div *ngIf="gameOver">
-    <p>{{ gameOver }}</p>
-    <p>View the final results here: ___</p>
   </div>
-  <!-- <div *ngFor="let player of allPlayerScores" *ngIf="playerReady" [hidden]="gameOver">
-    <p>Player: {{ player.player_name }}</p>
-    <p>Style: {{ player.style }}</p>
-    <p>Skill: {{ player.skill }}</p>
-    <p>Originality: {{ player.originality }}</p>
-    <p>Effort: {{ player.effort }}</p>
-    <p>Total Score: {{ player.totalscore }}</p>=
-
-  </div> -->
-
-  <p  *ngFor="let message of messages" [hidden]="gameOver">
-  
-    Player: {{ message.player_name }}
-
-    Style: {{message.style}} Skill: {{message.skill}} 
-    Originality: {{message.originality}}
-    Effort: {{message.effort}}
-  
-    Total Score: {{ message.totalscore }}
-    Average Score: {{ message.average }}
-    
-    <google-chart 
-    [type]="myType"
-    [data]="myData"
-  [columnNames]="myColumnNames"
-[options]="myOptions"
-[title]="myTitle"> 
-</google-chart>
-  </p>
-    
+  <div class="result-avg"> 
+    <span class="average">{{ competitor.overall_avg }} </span> 
+    <span class="over-avg">Overall Average</span>
+  </div>
+  <div class="result-name">
+    {{ competitor.name }}
+  </div>
+  <!-- <div class="result-total">Total Score: {{ competitor.total }}</div> -->
+</div>
 
 
- <!-- </div>  -->
-
-
+<div *ngIf="gameOver">
+  <p>{{ gameOver }}</p>
+  <p>View the final results here: ___</p>
+</div>

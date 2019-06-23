@@ -7,7 +7,10 @@ import { ChatService } from '../chat.service';
   styleUrls: ['./competitor.component.css']
 })
 export class CompetitorComponent implements OnInit {
+  currentPlayer: any;
+
   competitors: any;
+  currentCompetitors: any;
 
   constructor(private chatService: ChatService) { }
 
@@ -17,12 +20,25 @@ export class CompetitorComponent implements OnInit {
   // });
   
   ngOnInit() {
+
+    this.chatService.getCurrentPlayers().subscribe(response => {
+      this.currentCompetitors = response;
+           
+    });
+
+    this.chatService.getPlayer().subscribe(response => {
+      this.currentPlayer = response;
+
+    });
+    
   }
 
   addNewCompetitor(form) {
-    this.chatService.addcompetitor(form.value.name).subscribe(response => {
-      this.competitors = response;
-    });
+    this.chatService.addcompetitor(form.value.name);
+    
+    // .subscribe(response => {
+    //   this.competitors = response;
+    // });
     
   }
 

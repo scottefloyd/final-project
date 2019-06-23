@@ -11,7 +11,7 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
       state('in', style({ transform: `translateX(400px)`})),
       transition(':enter', [
         style({transform:'translateX(500px)'}),
-        animate(2000)
+        animate(1000)
       ]),
       transition('*=>void', [
         
@@ -42,6 +42,11 @@ export class PlayerQueueComponent implements OnInit {
 
   ngOnInit() {
 
+    this.chatService.getCurrentPlayers().subscribe(response => {
+      this.currentCompetitors = response;
+      //console.log(response);
+           
+    });
     
   }
 

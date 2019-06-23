@@ -1,15 +1,55 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
 
+#results {
+  display: grid;
+  width: 400px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+}
 
-div{
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
+.result-thumbnail {
+  justify-self: center;
+  border-radius: 50%;
+  background-color: gray;
+  height: 100px;
+  width: 100px;
+  margin: 12px;
+}
+
+.result-chart {
+
 
 }
 
-p{
-    font-family: 'Press Start 2P', cursive;
-    color: red;
-    margin-bottom: 10px;
+.result-avg {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid #df2a91;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  align-items: center;
+}
+
+.over-avg {
+  font-size: 12px;
+  text-align: center;
+}
+
+.average {
+  font-size: 22px;
+  font-weight: bold;
+  color: #df2a91;
+}
+
+.result-name {
+  text-align: center;
+
+}
+
+.result-total {
+
+
 }
