@@ -31,15 +31,15 @@
   margin: 0 10px;
 }
 
-/* #start-button button {
-  margin-right: 20px;
-  background-color: Green;
+#start-button button {
+  
+  background-color: #00b8b8;
 }
 
 #stop-button button {
-  margin-right: 20px;
+
   background-color: red;
-} */
+}
 
 
 #next-button button {

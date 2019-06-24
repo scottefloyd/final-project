@@ -28,7 +28,6 @@ export class ChatService {
     this.socket = io(this.url);
   }
 
-
   public getCurrentPlayers() {
     return Observable.create(observer => {
       this.socket.on("get-current-players", message => {
@@ -38,63 +37,50 @@ export class ChatService {
   }
 
   addcompetitor(newCompetitor) {
-
     console.log(newCompetitor);
-    
+
     this.socket.emit("new-competitor", newCompetitor);
   }
 
-  sendPlayer(player) {
-    this.socket.emit("new-player", player);
+  sendPlayer(player, nextplayer) {
+    this.socket.emit("new-player", player, nextplayer);
   }
-
 
   getPlayer() {
     return Observable.create(observer => {
-      this.socket.on("new-player", message => {
-        observer.next(message);
+      this.socket.on("new-player", (currentplayer, nextplayer) => {
+        observer.next(currentplayer);
+        console.log(currentplayer);
+        console.log(nextplayer);
+        
       });
     });
   }
 
   public sendScore(score, id, name) {
-
     this.socket.emit("player-scores", score, id, name);
-
   }
 
- //next button
- addPlayerSession() {
 
-
-  this.allPlayerScores.push(this.totalScores);
-  this.socket.emit("all-scores", this.allPlayerScores);
-  console.log(this.totalScores);
-  this.totalScores = [];
-}
-
-public getMessages() {
-  return Observable.create(observer => {
-    this.socket.on("post-scores", message => {
-      observer.next(message);
-    });
-  });
-}
-
-
-  /////////////////////////////////////////////////////////////////////////////
-
-
-
-  getCompetitors() {
-    return this.http.get(`${this.url}/api/competitors`, {
-      responseType: "json"
+  public getMessages() {
+    return Observable.create(observer => {
+      this.socket.on("post-scores", message => {
+        observer.next(message);
+      });
     });
   }
 
   stopComp() {
     this.gameover = "GAME OVER";
     this.socket.emit("game-over", this.gameover);
+  }
+
+  /////////////////////////////////////////////////////////////////////////////
+
+  getCompetitors() {
+    return this.http.get(`${this.url}/api/competitors`, {
+      responseType: "json"
+    });
   }
 
   public getgameOver() {
@@ -129,7 +115,6 @@ public getMessages() {
     });
   }
 
-
   //this is not currently sending to Audience
   public getScoreData() {
     return Observable.create(observer => {
@@ -155,12 +140,4 @@ public getMessages() {
     this.totalScores = scores;
   }
 
-
-  // getAllScoreData() {
-  //   return Observable.create(observer => {
-  //     this.socket.on("all-scores", message => {
-  //       observer.next(message);
-  //     });
-  //   });
-  // }
 }
