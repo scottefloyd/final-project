@@ -21,11 +21,12 @@ h2 {
 }
 
 .home-links {
-  padding: 25px;
+  padding: 20px 25px;
   border-radius: 20px;
   background-color: #df2a91;
+  box-shadow: 0px 5px 9px grey;
   margin: 12px;
-  width: 90px;
+  width: 100px;
   justify-self: center;
 
 }

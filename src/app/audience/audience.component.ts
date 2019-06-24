@@ -10,18 +10,19 @@ import { GoogleChartComponent } from 'angular-google-charts';
 export class AudienceComponent implements OnInit {
 
   currentPlayer: any;
+  nextCompetitor: any;
   competitors: any;
   playerReady: any = false;
   gameOver: any;
-  allPlayerScores: [];
 
 
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
 
-    this.chatService.getPlayer().subscribe(response => {
-      this.currentPlayer = response;
+    this.chatService.getPlayer().subscribe((currentplayer, nextplayer) => {
+      this.currentPlayer = currentplayer, 
+      this.nextCompetitor = nextplayer;
     });
 
     this.chatService.getMessages().subscribe(message => {
