@@ -44,14 +44,13 @@ export class ChatService {
 
   sendPlayer(player, nextplayer) {
     this.socket.emit("new-player", player, nextplayer);
+
   }
 
   getPlayer() {
     return Observable.create(observer => {
       this.socket.on("new-player", (currentplayer, nextplayer) => {
         observer.next(currentplayer);
-        console.log(currentplayer);
-        console.log(nextplayer);
         
       });
     });
@@ -71,8 +70,8 @@ export class ChatService {
   }
 
   stopComp() {
-    this.gameover = "GAME OVER";
-    this.socket.emit("game-over", this.gameover);
+  
+    this.socket.emit("game-over");
   }
 
   /////////////////////////////////////////////////////////////////////////////

@@ -12,7 +12,7 @@ export class AudienceComponent implements OnInit {
   nextCompetitor: any;
   competitors: any;
   playerReady: any = false;
-  gameOver: any;
+  gameOver: boolean = false;
 
   constructor(private chatService: ChatService) { }
 
@@ -32,6 +32,8 @@ export class AudienceComponent implements OnInit {
     
     this.chatService.getgameOver().subscribe(message => {
       this.gameOver = message;
+      console.log(this.gameOver);
+      
     });
 
  
