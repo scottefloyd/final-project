@@ -17,12 +17,15 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
         
         animate(100)
       ])
-    ])
-    
+    ]) 
   ]
-
 })
+
+
 export class PlayerQueueComponent implements OnInit {
+
+  currentPlayer: any;
+  nextCompetitor: any;
   currentCompetitors: any;
 
   constructor(private chatService: ChatService) {
@@ -31,16 +34,21 @@ export class PlayerQueueComponent implements OnInit {
       this.currentCompetitors = response;        
     });
 
-
-    // this.chatService.getCompetitors().subscribe(response => {
-    //   this.currentCompetitors = response;
-
-    // });
-
-
   }
 
   ngOnInit() {
+
+    this.chatService.getPlayer().subscribe((currentplayer, nextplayer) => {
+      this.currentPlayer = currentplayer, 
+      this.nextCompetitor = nextplayer;
+    });
+
+    this.chatService.getCurrentPlayers().subscribe(response => {
+      this.currentCompetitors = response;
+      //console.log(response);
+           
+    });
+
 
     
   }

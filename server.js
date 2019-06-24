@@ -4,56 +4,144 @@ const app = express();
 const http = require("http");
 const cors = require("cors");
 const server = http.Server(app);
-const socketIO = require('socket.io');
+const socketIO = require("socket.io");
 const io = socketIO(server);
 const port = process.env.PORT || 3000;
 const routes = require("./routes");
+const pool = require("./connection");
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
-app.use("/api", routes)
+app.use("/api", routes);
 
-
-io.on('connection', (socket) => {
-  socket.on("total-scores", message => {
-    //finalScores.push(message);
-    //console.log(finalScores);
-    io.emit("total-scores", message);
-  });
+io.on("connection", () => {
+  pool
+    .query(
+      "select * from competitors where current_competitor=true order by id"
+    )
+    .then(result => {
+      io.emit("get-current-players", result.rows);
+    });
 });
 
-const finalScores = [];
+let scoreArray = [];
+let playerArray = [];
+let currentPlayer = {};
 
+io.on("connection", socket => {
+  socket.on("new-player", (message, nextplayer) => {
+    scoreArray.push({
+      id: message.id,
+      name: message.name,
+      current_competitor: message.current_competitor,
+      avg_style: 0,
+      avg_skill: 0,
+      avg_originality: 0,
+      avg_effort: 0,
+      total: 0,
+      overall_avg: 0
+    });
+    io.emit("new-player", message, nextplayer);
 
-io.on('connection', (socket) => {
-  socket.on("new-player", message => {
-    io.emit("new-player", message);
-  });
-});
-
-io.on('connection', (socket) => {
-  socket.on("all-scores", message => {
-
-     console.log(message);
+    console.log(nextplayer);
     
+    io.emit("next-player", nextplayer);
+    io.emit("post-scores", scoreArray);
+  });
+
+  socket.on("player-scores", (scores, id, name) => {
+    playerArray.push(scores);
+
+    let tot_style = 0;
+    let tot_skill = 0;
+    let tot_originality = 0;
+    let tot_effort = 0;
+
+    for (let i = 0; i < playerArray.length; i++) {
+      tot_style += playerArray[i].style;
+      tot_skill += playerArray[i].skill;
+      tot_originality += playerArray[i].originality;
+      tot_effort += playerArray[i].effort;
+    }
+
+    let avg_style = tot_style / playerArray.length;
+    let avg_skill = tot_skill / playerArray.length;
+    let avg_originality = tot_originality / playerArray.length;
+    let avg_effort = tot_effort / playerArray.length;
+    let overall_avg =
+      (avg_style + avg_skill + avg_originality + avg_effort) / 4;
+
+    pool
+      .query(
+        "update competitors set avg_style=$1::real, avg_originality=$2::real, avg_effort=$3::real, avg_skill=$4::real, overall_avg=$5::real where id=$6::int",
+        [
+          Math.round(avg_style * 100) / 100,
+          Math.round(avg_originality * 100) / 100,
+          Math.round(avg_effort * 100) / 100,
+          Math.round(avg_skill * 100) / 100,
+          Math.round(overall_avg * 100) / 100,
+          id
+        ]
+      )
+      .then(() => {
+        pool
+          .query(`select * from competitors where id = ${id}`)
+          .then(result => {
+            let index = scoreArray.length - 1;
+
+            scoreArray.splice(index, 1, result.rows[0]);
+
+            io.emit("post-scores", scoreArray);
+          });
+      });
+
+    io.emit("player-scores", currentPlayer);
+  });
+
+  // socket.on("total-scores", message => {
+  //   io.emit("total-scores", message);
+  // });
+
+  socket.on("new-competitor", newCompetitor => {
+    pool
+      .query(
+        "insert into competitors (name, current_competitor) VALUES ($1::text, $2::boolean)",
+        [newCompetitor, true]
+      )
+      .then(() => {
+        pool
+          .query(
+            "select * from competitors where current_competitor=true order by id"
+          )
+          .then(result => {
+            io.emit("get-current-players", result.rows);
+          });
+      });
+  });
+});
+
+io.on("connection", socket => {
+  socket.on("all-scores", message => {
     io.emit("all-scores", message);
   });
 });
 
-io.on('connection', (socket) => {
+io.on("connection", socket => {
   socket.on("game-over", message => {
+    pool.query("update competitors set current_competitor=$1::boolean", [true]);
+    playerArray = [];
     io.emit("game-over", message);
   });
 });
 
-io.on('connection', (socket) => {
+io.on("connection", socket => {
   socket.on("clear-scores", message => {
     io.emit("clear-scores", message);
   });
 });
 
-io.on('connection', (socket) => {
+io.on("connection", socket => {
   socket.on("load-competitors", message => {
     io.emit("load-competitors", message);
   });

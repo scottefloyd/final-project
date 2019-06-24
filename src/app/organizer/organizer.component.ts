@@ -22,10 +22,16 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
   ]
 
 })
+
 export class OrganizerComponent implements OnInit {
+
   currentCompetitors: any;
   currentPlayer: any;
+  nextCompetitor: any;
   playerCount: number = 1;
+  showstop: boolean = true;
+  showstart: boolean = true;
+
   currentScores: any[] = [];
   message: any;
 
@@ -33,44 +39,32 @@ export class OrganizerComponent implements OnInit {
 
   ngOnInit() {
 
-    this.chatService.displayCurrentCompetitors().subscribe(response => {
-      this.currentCompetitors = response;    
+    this.chatService.getCurrentPlayers().subscribe(response => {
+      this.currentCompetitors = response;   
     });
 
-    this.chatService.getScoreData().subscribe(response => {
-      this.currentScores = response;
-      this.chatService.getCurrentScores(this.currentScores);      
-    });
-
-    this.chatService.getMessages().subscribe(message => {
-      //console.log(message);
-      this.message = message;
-      this.chatService.setTotalScores(this.message);
-
-      //this.messages.push(message);
-      // if (this.messages) {
-      //   this.playerReady = true;
-      // }
-    });
   }
-
+ 
   startCompetition() {
-    this.chatService.getCompetitors().subscribe(response => {
-      this.currentCompetitors = response;
-      this.chatService.loadCurrentCompetitors(this.currentCompetitors);
-      this.chatService.sendPlayer(this.currentCompetitors[0]);
-    });
+
+    this.currentPlayer = this.currentCompetitors[0];
+    this.chatService.sendPlayer(this.currentCompetitors[0], this.currentCompetitors[1]);
+    this.showstart = !this.showstart;
+    this.showstop = false;
   }
 
   stopComp() {
     this.chatService.stopComp();
+    this.showstop = !this.showstop;
+    this.showstart = true;
   }
 
   nextPlayer() {
+
     this.currentPlayer = this.currentCompetitors[this.playerCount];
-    this.chatService.sendPlayer(this.currentPlayer);
+    this.nextCompetitor = this.currentCompetitors[this.playerCount + 1];
+    this.chatService.sendPlayer(this.currentPlayer, this.nextCompetitor);
     this.playerCount++;
-    this.chatService.addPlayerSession();
 
   }
 
