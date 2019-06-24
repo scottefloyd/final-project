@@ -1,16 +1,30 @@
-<h2>Scores</h2>
-
 <div id="results" *ngFor="let competitor of competitors" [hidden]="gameOver">
+  <h2>Scores</h2>
   <div class="result-thumbnail"></div>
   <div class="result-chart">
-
     <table>
       <tr>
         <td>Average Style</td>
-        <td [style.background-color]="competitor.avg_style > 1 ? 'blue' : 'green'">0</td>
-        <td [style.background-color]="competitor.avg_style > 2 ? 'blue' : 'green'">0</td>
-        <td [style.background-color]="competitor.avg_style > 3 ? 'blue' : 'green'">0</td>
-        <td [style.background-color]="competitor.avg_style > 4 ? 'blue' : 'green'">0</td>
+        <td
+          [style.background-color]="competitor.avg_style > 1 ? 'blue' : 'green'"
+        >
+          0
+        </td>
+        <td
+          [style.background-color]="competitor.avg_style > 2 ? 'blue' : 'green'"
+        >
+          0
+        </td>
+        <td
+          [style.background-color]="competitor.avg_style > 3 ? 'blue' : 'green'"
+        >
+          0
+        </td>
+        <td
+          [style.background-color]="competitor.avg_style > 4 ? 'blue' : 'green'"
+        >
+          0
+        </td>
         <td>0</td>
         <td>0</td>
         <td>0</td>
@@ -74,7 +88,9 @@
   <!-- <div class="result-total">Total Score: {{ competitor.total }}</div> -->
 </div>
 
-<div *ngIf="gameOver">
-  <p>{{ gameOver }}</p>
-  <p>View the final results here: ___</p>
+<div id="gameover" *ngIf="gameOver">
+  <p>Thank you for participating in the Boogie Battle!</p>
+  <a class="end-link" routerLink="/results" routerLinkActive="active"
+    >View Scores</a
+  >
 </div>
