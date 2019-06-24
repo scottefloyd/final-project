@@ -12,6 +12,7 @@ export class JudgeComponent implements OnInit {
   currentCompetitors: any;
   playerScore: any;
   playerReady = false;
+  gameOver: boolean = false;
 
   constructor(private chatService: ChatService) { }
 
@@ -23,14 +24,17 @@ export class JudgeComponent implements OnInit {
     });
 
     this.chatService.getPlayer().subscribe(response => {
-      this.currentPlayer = response;
-      console.log(response);
-      
+      this.currentPlayer = response;    
 
       if (this.currentPlayer.name) {
             this.playerReady = true;
         }
+    });
 
+    this.chatService.getgameOver().subscribe(message => {
+      this.gameOver = message;
+      console.log(this.gameOver);
+      
     });
    
    }

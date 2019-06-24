@@ -31,6 +31,10 @@ let currentPlayer = {};
 
 io.on("connection", socket => {
   socket.on("new-player", (message, nextplayer) => {
+
+    let gameover = false;
+    io.emit("game-over", gameover);
+
     scoreArray.push({
       id: message.id,
       name: message.name,
@@ -47,6 +51,8 @@ io.on("connection", socket => {
     console.log(nextplayer);
     
     io.emit("next-player", nextplayer);
+
+      
     io.emit("post-scores", scoreArray);
   });
 
@@ -91,7 +97,7 @@ io.on("connection", socket => {
             let index = scoreArray.length - 1;
 
             scoreArray.splice(index, 1, result.rows[0]);
-
+            
             io.emit("post-scores", scoreArray);
           });
       });
@@ -130,8 +136,11 @@ io.on("connection", socket => {
 io.on("connection", socket => {
   socket.on("game-over", message => {
     pool.query("update competitors set current_competitor=$1::boolean", [true]);
-    playerArray = [];
-    io.emit("game-over", message);
+    scoreArray = [];
+
+    io.emit("post-scores", scoreArray);
+    let gameover = true;
+    io.emit("game-over", gameover);
   });
 });
 

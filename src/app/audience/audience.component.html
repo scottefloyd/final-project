@@ -1,10 +1,9 @@
-<h2>Scores</h2>
-
 <div id="results" *ngFor="let competitor of competitors" [hidden]="gameOver">
+  <h2>Scores</h2>
   <div class="result-thumbnail"></div>
   <div class="result-chart">
-
     <table>
+
       <tr colspan="11" >
         <td class="averagetext" >Average Scores</td>
       </tr>
@@ -20,6 +19,7 @@
         <td [style.background-color]="competitor.avg_style > 8 ? '#df2a91' : '#eaeaea'"></td>
         <td [style.background-color]="competitor.avg_style > 9 ? '#df2a91' : '#eaeaea'"></td>
         <td [style.background-color]="competitor.avg_style > 10 ? '#df2a91' : '#eaeaea'"></td>
+
       </tr>
       <tr>
         <td>Skill</td>
@@ -72,7 +72,9 @@
   <!-- <div class="result-total">Total Score: {{ competitor.total }}</div> -->
 </div>
 
-<div *ngIf="gameOver">
-  <p>{{ gameOver }}</p>
-  <p>View the final results here: ___</p>
+<div id="gameover" *ngIf="gameOver">
+  <p>Thank you for participating in the Boogie Battle!</p>
+  <a class="end-link" routerLink="/results" routerLinkActive="active"
+    >View Scores</a
+  >
 </div>

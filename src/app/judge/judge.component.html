@@ -1,6 +1,6 @@
 
 
-<!-- it's not defined until next button is clicked -->
+<div [hidden]="gameOver">
 <p *ngIf="playerReady"> {{ currentPlayer.name }} </p>
 
 <form #scoreForm="ngForm" (ngSubmit)="submitScore(scoreForm)">
@@ -33,4 +33,11 @@
 
 <button>Submit</button>
 </form>
+</div>
+
+<div id="gameover" *ngIf="gameOver">
+    <p>Thank you for participating in the Boogie Battle!</p>
+    <a class="end-link" routerLink="/results" routerLinkActive="active">View Scores</a>
+    
+</div>
 
