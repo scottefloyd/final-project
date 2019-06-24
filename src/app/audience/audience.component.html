@@ -4,15 +4,68 @@
   <div class="result-thumbnail"></div>
   <div class="result-chart">
 
+    <table>
+      <tr>
+        <td>Average Style</td>
+        <td [style.background-color]="competitor.avg_style > 1 ? 'blue' : 'green'">0</td>
+        <td [style.background-color]="competitor.avg_style > 2 ? 'blue' : 'green'">0</td>
+        <td [style.background-color]="competitor.avg_style > 3 ? 'blue' : 'green'">0</td>
+        <td [style.background-color]="competitor.avg_style > 4 ? 'blue' : 'green'">0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Average Skill</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Average Originality</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Average effort</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+
     <p>Style: {{ competitor.avg_style }}</p>
     <p>Skill: {{ competitor.avg_skill }}</p>
     <p>Originality: {{ competitor.avg_originality }}</p>
     <p>Effort: {{ competitor.avg_effort }}</p>
-  
-
   </div>
-  <div class="result-avg"> 
-    <span class="average">{{ competitor.overall_avg }} </span> 
+  <div class="result-avg">
+    <span class="average">{{ competitor.overall_avg }} </span>
     <span class="over-avg">Overall Average</span>
   </div>
   <div class="result-name">
@@ -20,7 +73,6 @@
   </div>
   <!-- <div class="result-total">Total Score: {{ competitor.total }}</div> -->
 </div>
-
 
 <div *ngIf="gameOver">
   <p>{{ gameOver }}</p>
