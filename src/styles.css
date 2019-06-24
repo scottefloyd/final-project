@@ -2,7 +2,6 @@
 
 html {
   height: 100%;
-  
 }
 a {
   text-decoration: none;
@@ -11,9 +10,9 @@ body {
   height: 100%;
   margin: 0 auto;
   padding: 0;
-  font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
   background: #eaeaea;
-  padding: 10px;
+
 }
 
 [hidden] {
@@ -28,6 +27,35 @@ h2 {
   font-size: 22px;
 }
 
+.end-link {
+  padding: 20px 25px;
+  font-size: 22px;
+  border-radius: 20px;
+  background-color: #df2a91;
+  box-shadow: 0px 5px 9px grey;
+  margin: 12px;
+  width: 140px;
+  text-align: center;
+  justify-self: center;
+  color: #fff;
+}
+
+#gameover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+ 
+}
+
+#gameover p {
+  font-size: 16px;
+  font-family: 'Press Start 2P';
+  line-height: 20px;
+  text-align: center;
+}
+
 button {
   background-color: #df2a91;
   box-shadow: 0px 5px 9px grey;
@@ -38,6 +66,11 @@ organizer {
   height: 100%;
   width: 100%;
 }
+
+app-competitor, judge, audience {
+  height: 100%;
+
+}
 .wrapper {
   min-height: 100%;
   display: grid;
@@ -46,7 +79,6 @@ organizer {
 }
 header {
   border-bottom: 1px solid #000;
-
 }
 
 header,
@@ -56,7 +88,6 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 nav {
@@ -76,7 +107,6 @@ nav {
 .nav-scores {
   place-self: center;
 }
-
 
 header {
   grid-column-start: 1;
@@ -99,5 +129,11 @@ footer {
   grid-row-end: 4;
   bottom: 0;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

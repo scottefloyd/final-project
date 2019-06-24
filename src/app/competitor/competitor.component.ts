@@ -8,37 +8,31 @@ import { ChatService } from '../chat.service';
 })
 export class CompetitorComponent implements OnInit {
   currentPlayer: any;
-
+  gameOver: boolean = false;
   competitors: any;
   currentCompetitors: any;
 
   constructor(private chatService: ChatService) { }
 
-  // this.chatService.getcompetitor().subscribe(response => {
-  //   this.competitors = response;
-  //   console.log(this.competitors)
-  // });
   
   ngOnInit() {
 
     this.chatService.getCurrentPlayers().subscribe(response => {
       this.currentCompetitors = response;
-           
     });
 
     this.chatService.getPlayer().subscribe(response => {
       this.currentPlayer = response;
+    });
 
+    this.chatService.getgameOver().subscribe(message => {
+      this.gameOver = message;
     });
     
   }
 
   addNewCompetitor(form) {
     this.chatService.addcompetitor(form.value.name);
-    
-    // .subscribe(response => {
-    //   this.competitors = response;
-    // });
     
   }
 
