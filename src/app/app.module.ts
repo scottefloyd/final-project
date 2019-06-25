@@ -18,6 +18,8 @@ import {MatSliderModule} from '@angular/material';
 
 
 
+
+
 const appRoutes: Routes = [ 
   { path: "", redirectTo: "/home", pathMatch: "full" }, 
   { path: "home", component: HomeComponent },
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     JudgeComponent,
     AudienceComponent,
     ResultsComponent,
-    PlayerQueueComponent
+    PlayerQueueComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    
   ],
   providers: [ChatService],
   bootstrap: [AppComponent]

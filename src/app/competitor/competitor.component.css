@@ -22,6 +22,9 @@ form {
   grid-column-end: 3;
   grid-row: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+
 }
 
 input {

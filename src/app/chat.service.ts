@@ -20,6 +20,8 @@ export class ChatService {
   allScoreObjects: any[] = [];
   judgeCounter: number = 0;
   averageScore: any;
+  standby:boolean;
+  showqueue:boolean;
 
   private url = "http://localhost:3000";
   private socket;
@@ -37,13 +39,14 @@ export class ChatService {
   }
 
   addcompetitor(newCompetitor) {
-    console.log(newCompetitor);
+   // console.log(newCompetitor);
 
     this.socket.emit("new-competitor", newCompetitor);
   }
 
   sendPlayer(player, nextplayer) {
     this.socket.emit("new-player", player, nextplayer);
+    
 
   }
 
@@ -73,6 +76,38 @@ export class ChatService {
   
     this.socket.emit("game-over");
   }
+
+  standingBy() {
+    this.socket.emit("stand-by");
+  }
+  
+  public standBy() {
+    return Observable.create(observer => {
+      this.socket.on("stand-by", message => {
+        observer.next(message);
+        
+        
+      });
+    });
+  }
+
+
+  nameSubmited() {
+    return Observable.create(observer => {
+      this.socket.on("name-submit", message => {
+        observer.next(message);
+      });
+    });
+  }
+
+  showPlayerQueue(){
+    return Observable.create(observer => {
+      this.socket.on("player-queue", message => {
+        observer.next(message);
+      })
+    })
+  }
+
 
   /////////////////////////////////////////////////////////////////////////////
 
@@ -138,5 +173,7 @@ export class ChatService {
   setTotalScores(scores) {
     this.totalScores = scores;
   }
+
+  
 
 }
