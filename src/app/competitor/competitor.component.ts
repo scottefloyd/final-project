@@ -11,6 +11,7 @@ export class CompetitorComponent implements OnInit {
   currentPlayer: any;
   gameOver: boolean = false;
   competitors: any;
+  nameSubmited: boolean = false;
   currentCompetitors: any;
   nameSubmited: boolean = false;
   playerQueue:boolean = false;
@@ -48,6 +49,7 @@ export class CompetitorComponent implements OnInit {
   }
 
   addNewCompetitor(form) {
+
     
       this.chatService.addcompetitor(form.value.name);
       this.nameSubmited = true;
