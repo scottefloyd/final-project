@@ -24,15 +24,16 @@ import {
   ]
 })
 export class PlayerQueueComponent implements OnInit {
-  //currentPlayer: any;
-  //nextCompetitor: any;
+
+  currentPlayer: any;
+  nextCompetitor: any;
   currentCompetitors: any;
   playerReady: boolean = false;
   nextReady: boolean = false;
 
-  @Input() currentPlayer: any;
+  //@Input() currentPlayer: any;
 
-  @Input() nextCompetitor: any;
+  //@Input() nextCompetitor: any;
 
 
   constructor(private chatService: ChatService) {
@@ -42,14 +43,14 @@ export class PlayerQueueComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.chatService.getNext().subscribe(response => {
-    //   this.nextCompetitor = response;
-    //   console.log(this.nextCompetitor);
+    this.chatService.getNext().subscribe(response => {
+      this.nextCompetitor = response;
+      console.log(this.nextCompetitor);
 
-    //   // if (this.currentPlayer.name) {
-    //   //       this.playerReady = true;
-    //   //   }
-    // });
+      if (this.currentPlayer.name) {
+            this.playerReady = true;
+        }
+    });
 
     // this.chatService.getPlayer().subscribe((currentplayer, nextplayer) => {
     //   this.currentPlayer = currentplayer;
@@ -57,9 +58,6 @@ export class PlayerQueueComponent implements OnInit {
     //   console.log(currentplayer);
     //   console.log(nextplayer);
 
-    //   //this.nextCompetitor = nextplayer;
-    //   //console.log(this.nextCompetitor);
-    //   // console.log(this.currentPlayer);
 
     //   if (this.nextCompetitor.name) {
     //     this.nextReady = true;
@@ -74,5 +72,6 @@ export class PlayerQueueComponent implements OnInit {
       this.currentCompetitors = response;
       //console.log(response);
     });
+
   }
 }

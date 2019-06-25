@@ -47,9 +47,6 @@ io.on("connection", socket => {
       overall_avg: 0
     });
     io.emit("new-player", newplayer, nextplayer);
-    console.log(newplayer);
-    
-    console.log(nextplayer);
     
     //io.emit("next-player", nextplayer);
       
@@ -100,9 +97,7 @@ io.on("connection", socket => {
             let index = scoreArray.length - 1;
 
             scoreArray.splice(index, 1, result.rows[0]);
- 
-            console.log(scoreArray);
-            
+
             
             io.emit("post-scores", scoreArray);
           });
