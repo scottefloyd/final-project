@@ -3,38 +3,37 @@
 <div [hidden]="gameOver">
 <p *ngIf="playerReady"> Now judging: {{ currentPlayer.name }} </p>
 
-<form #scoreForm="ngForm" (ngSubmit)="submitScore(scoreForm)">
+<form #scoreForm="ngForm" (ngSubmit)="submitScore(scoreForm)"  >
 
 <label for="">Style</label>
-<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="style"></mat-slider>
+<mat-slider required min="0" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="style"></mat-slider>
 <div class= "scale">
-  <p> 1</p> <p>10</p>
+  <p> 0</p> <p>10</p>
 </div>
 
 <label for="">Skill</label>
-<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="skill" ></mat-slider>
+<mat-slider required min="0" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="skill" ></mat-slider>
 <div class= "scale">
-  <p> 1</p> <p>10</p>
+  <p> 0</p> <p>10</p>
   </div>
 
 
 <label for="">Originality</label>
-<mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="originality"></mat-slider>
+<mat-slider required min="0" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="originality"></mat-slider>
   <div class= "scale">
-  <p> 1</p> <p>10</p>
+  <p> 0</p> <p>10</p>
   </div>
   
 <label for="">Effort</label>
-  <mat-slider min="1" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="effort"></mat-slider>
+  <mat-slider required min="0" max="10" step="1" value="1" thumbLabel tickInterval="1" ngModel name="effort"></mat-slider>
   <div class= "scale">
-    <p> 1</p> <p>10</p>
+    <p> 0</p> <p>10</p>
     </div>
 
 
-<button>Submit</button>
+<button [disabled]="!scoreForm.value.style || !scoreForm.value.skill || !scoreForm.value.effort || !scoreForm.value.originality ">Submit</button>
 </form>
 </div>
-
 <div id="gameover" *ngIf="gameOver">
     <p>Thank you for participating in the Boogie Battle!</p>
     <a class="end-link" routerLink="/results" routerLinkActive="active">View Scores</a>
