@@ -31,8 +31,14 @@ export class OrganizerComponent implements OnInit {
   playerCount: number = 1;
   showstop: boolean = true;
   showstart: boolean = true;
+
+  standby: boolean = false;
+  
+  
+
   playerReady: boolean = false;
   nextReady: boolean = false;
+
 
   currentScores: any[] = [];
   message: any;
@@ -43,6 +49,7 @@ export class OrganizerComponent implements OnInit {
 
     this.chatService.getCurrentPlayers().subscribe(response => {
       this.currentCompetitors = response;   
+      console.log(this.currentCompetitors);
     });
 
   }
@@ -55,6 +62,7 @@ export class OrganizerComponent implements OnInit {
     this.showstart = !this.showstart;
     this.showstop = false;
 
+
     if(this.nextCompetitor.name) {
       this.nextReady = true;
     }
@@ -62,6 +70,7 @@ export class OrganizerComponent implements OnInit {
     if (this.currentPlayer.name) {
       this.playerReady = true;
   }
+
   }
 
   stopComp() {
@@ -85,6 +94,8 @@ export class OrganizerComponent implements OnInit {
   }
     
     this.playerCount++;
+   
+    
 
   }
 

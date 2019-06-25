@@ -35,6 +35,13 @@ io.on("connection", socket => {
     let gameover = false;
     io.emit("game-over", gameover);
 
+    let standBy = false;
+    io.emit("stand-by", standBy);
+
+    let playerQueue = true;
+    io.emit("player-queue", playerQueue);
+    
+
     scoreArray.push({
       id: newplayer.id,
       name: newplayer.name,
@@ -111,6 +118,11 @@ io.on("connection", socket => {
   // });
 
   socket.on("new-competitor", newCompetitor => {
+    let nameSubmited = true;
+    io.emit("name-submit", nameSubmited);
+
+  
+
     pool
       .query(
         "insert into competitors (name, current_competitor) VALUES ($1::text, $2::boolean)",
@@ -143,6 +155,10 @@ io.on("connection", socket => {
     io.emit("post-scores", scoreArray);
     let gameover = true;
     io.emit("game-over", gameover);
+    let playerQueue = false;
+    io.emit("player-queue", playerQueue);
+    let nameSubmited = false;
+    io.emit("name-submit", nameSubmited);
   });
 });
 
@@ -157,6 +173,8 @@ io.on("connection", socket => {
     io.emit("load-competitors", message);
   });
 });
+
+
 
 server.listen(port, () => {
   console.log(`started on port: ${port}`);

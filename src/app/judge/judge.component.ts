@@ -14,7 +14,9 @@ export class JudgeComponent implements OnInit {
   playerScore: any;
   playerReady = false;
   gameOver: boolean = false;
-  required: boolean;
+
+  standBy:boolean = false;
+
 
   constructor(private chatService: ChatService) { }
 
@@ -36,9 +38,16 @@ export class JudgeComponent implements OnInit {
 
     this.chatService.getgameOver().subscribe(message => {
       this.gameOver = message;
-      console.log(this.gameOver);
+      // console.log(this.gameOver);
       
     });
+
+    this.chatService.standBy().subscribe(message => {
+      this.standBy = message;
+      
+      
+    });
+    
    
    }
 
@@ -50,7 +59,8 @@ export class JudgeComponent implements OnInit {
       effort: form.value.effort
      }
 
-     this.chatService.sendScore(this.playerScore, this.currentPlayer.id, this.currentPlayer.name); 
+     this.chatService.sendScore(this.playerScore, this.currentPlayer.id, this.currentPlayer.name);
+     this.standBy = true;
 
      //hide form and display next competitor name, redisplay form when next competitor is up.
 
@@ -59,4 +69,5 @@ export class JudgeComponent implements OnInit {
     
   }
 
+   
 }

@@ -1,4 +1,28 @@
-<div id="competitor">
+
+
+<div id="competitor" [hidden]="gameOver">
+<form #nameForm="ngForm" (ngSubmit)="addNewCompetitor(nameForm)"  [hidden] ="nameSubmited">
+
+ 
+  <h2>Enter your name:</h2>
+  <input type="text" ngModel name="name">
+  <button>Join the Boogie Battle </button>
+</form> 
+
+
+
+<div id="gameover" *ngIf="nameSubmited">
+  <p>Thanks for joining the Boogie Down! Please wait your turn!</p>
+</div>
+
+<div *ngIf="playerQueue">
+ <player-queue></player-queue>
+</div>
+ 
+
+</div>
+
+<!-- <div id="competitor">
   <form
     #nameForm="ngForm"
     (ngSubmit)="addNewCompetitor(nameForm)"
@@ -12,12 +36,15 @@
     </section>
   
     <button>Join the Boogie Battle</button>
-  </form>
+  </form> -->
+
 
   <div id="gameover" *ngIf="gameOver">
     <p>Thank you for participating in the Boogie Battle!</p>
+
     <a class="end-link" routerLink="/results" routerLinkActive="active"
       >View Scores</a
     >
   </div>
 </div>
+

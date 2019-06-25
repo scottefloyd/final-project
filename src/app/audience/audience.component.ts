@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from "../chat.service";
-import { GoogleChartComponent } from 'angular-google-charts';
 
 @Component({
   selector: 'audience',
@@ -14,7 +13,6 @@ export class AudienceComponent implements OnInit {
   competitors: any;
   playerReady: any = false;
   gameOver: boolean = false;
-
 
   constructor(private chatService: ChatService) { }
 
