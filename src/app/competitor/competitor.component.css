@@ -5,6 +5,13 @@
   height: 100%;
 }
 
+section {
+  height: 215px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
 button {
   width: 270px;
   border: none;

@@ -43,30 +43,30 @@ export class PlayerQueueComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.chatService.getNext().subscribe(response => {
-      this.nextCompetitor = response;
-      console.log(this.nextCompetitor);
-
-      if (this.currentPlayer.name) {
-            this.playerReady = true;
-        }
-    });
-
-    // this.chatService.getPlayer().subscribe((currentplayer, nextplayer) => {
-    //   this.currentPlayer = currentplayer;
-    //   this.nextCompetitor = nextplayer;
-    //   console.log(currentplayer);
-    //   console.log(nextplayer);
-
-
-    //   if (this.nextCompetitor.name) {
-    //     this.nextReady = true;
-    //   }
+    // this.chatService.getNext().subscribe(response => {
+    //   this.nextCompetitor = response;
+    //   console.log(this.nextCompetitor);
 
     //   if (this.currentPlayer.name) {
-    //     this.playerReady = true;
-    //   }
+    //         this.playerReady = true;
+    //     }
     // });
+
+    this.chatService.getPlayer().subscribe((players) => {
+      
+      console.log(players.currentplayer, players.nextplayer);
+
+      this.currentPlayer = players.currentplayer;
+      this.nextCompetitor = players.nextplayer;
+
+      if (this.nextCompetitor.name) {
+        this.nextReady = true;
+      }
+
+      if (this.currentPlayer.name) {
+        this.playerReady = true;
+      }
+    });
 
     this.chatService.getCurrentPlayers().subscribe(response => {
       this.currentCompetitors = response;

@@ -8,11 +8,11 @@
 
 .result-thumbnail {
   justify-self: center;
-  border-radius: 50%;
-  background-color: gray;
   height: 100px;
   width: 100px;
   margin: 12px;
+  align-self: center;
+  text-align: center;
 }
 
 table {

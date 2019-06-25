@@ -7,6 +7,25 @@
   height: 100%;
 }
 
+.current-next-player {
+  display: grid;
+  grid-template-columns: 120px 120px;
+  grid-template-rows: 40px 80px 40px;
+}
+
+.player-thumb, .comp-name {
+  align-self: center;
+  justify-self: center;
+}
+
+.comp-name {
+  height: 40px;
+}
+
+.player-thumb img {
+  height: 85px;
+}
+
 #organizer-section > * {
   align-self: center;
   justify-self: center;

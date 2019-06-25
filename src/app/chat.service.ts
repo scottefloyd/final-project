@@ -51,10 +51,8 @@ export class ChatService {
   getPlayer() {
     return Observable.create(observer => {
       this.socket.on("new-player", (currentplayer, nextplayer) => {
-        observer.next(currentplayer, nextplayer);
-
-        console.log(nextplayer);
-        
+        observer.next({currentplayer, nextplayer});
+      
 
       //currentplayer and nextplayer are correct!!!!
         
@@ -71,6 +69,9 @@ export class ChatService {
      
       this.socket.on("next-player", (nextplayer) => {
         observer.next(nextplayer);
+
+        // console.log(nextplayer);
+        
       });
     });
   }
