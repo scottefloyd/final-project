@@ -31,7 +31,7 @@ let currentPlayer = {};
 
 io.on("connection", socket => {
   socket.on("new-player", (newplayer, nextplayer) => {
-
+    playerArray = [];
     let gameover = false;
     io.emit("game-over", gameover);
 
