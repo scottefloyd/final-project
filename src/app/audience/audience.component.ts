@@ -25,6 +25,7 @@ export class AudienceComponent implements OnInit {
 
     this.chatService.getMessages().subscribe(message => {
       this.competitors = message;
+      
       if (this.competitors) {
         this.playerReady = true;
       }
@@ -32,7 +33,6 @@ export class AudienceComponent implements OnInit {
     
     this.chatService.getgameOver().subscribe(message => {
       this.gameOver = message;
-      console.log(this.gameOver);
       
     });
 

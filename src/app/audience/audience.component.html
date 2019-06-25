@@ -1,15 +1,23 @@
 <div id="results" *ngFor="let competitor of competitors" [hidden]="gameOver">
-  <h2>Scores</h2>
-  <div class="result-thumbnail"></div>
-  <div class="result-chart">
-    <table>
+  <!-- <h2>Scores</h2> -->
+  <div class="result-thumbnail">
 
-      <tr colspan="11" >
-        <td class="averagetext" >Average Scores</td>
-      </tr>
+      <div class="player-thumb">
+          <img src="../assets/breakdance.png" alt="">
+    
+        </div>
+
+  </div>
+  <div class="result-chart">
+      <p class="averagetext">Average Scores</p>
+    <table>
+      
+      <!-- <tr>
+        <td class="averagetext" colspan="10" >Average Scores</td>
+      </tr> -->
         <tr>
-        <td> Style</td>
-        <td [style.background-color]="competitor.avg_style > 1 ? '#df2a91' : '#eaeaea' "></td>
+        <td class="result-rows"> Style</td>
+        <td [style.background-color]="competitor.avg_style >= 1 ? '#df2a91' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_style > 2 ? '#df2a91' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_style > 3 ? '#df2a91' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_style > 4 ? '#df2a91' : '#eaeaea'"></td>
@@ -22,8 +30,8 @@
 
       </tr>
       <tr>
-        <td>Skill</td>
-        <td [style.background-color]="competitor.avg_skill > 1 ?  '#3cf8f8' : '#eaeaea' "></td>
+        <td class="result-rows">Skill</td>
+        <td [style.background-color]="competitor.avg_skill >= 1 ?  '#3cf8f8' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_skill > 2 ?  '#3cf8f8' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_skill > 3 ?  '#3cf8f8' : '#eaeaea'"></td>
         <td [style.background-color]="competitor.avg_skill > 4 ?  '#3cf8f8' : '#eaeaea' "></td>
@@ -35,8 +43,8 @@
         <td [style.background-color]="competitor.avg_skill > 10 ? '#3cf8f8' : '#eaeaea' "></td>
       </tr>
       <tr>
-        <td>Originality</td>
-        <td [style.background-color]="competitor.avg_originality > 1 ? '#df2a91' : '#eaeaea' "></td>
+        <td class="result-rows">Originality</td>
+        <td [style.background-color]="competitor.avg_originality >= 1 ? '#df2a91' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_originality > 2 ? '#df2a91' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_originality > 3 ? '#df2a91' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_originality > 4 ? '#df2a91' : '#eaeaea' "></td>
@@ -46,10 +54,10 @@
         <td [style.background-color]="competitor.avg_originality > 8 ? '#df2a91' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_originality > 9 ? '#df2a91' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_originality > 10 ?'#df2a91' : '#eaeaea' "></td>
-      </tr>
+      </tr> 
       <tr>
-        <td >Effort</td>
-        <td [style.background-color]="competitor.avg_effort > 1 ? '#3cf8f8' : '#eaeaea' "></td>
+        <td class="result-rows">Effort</td>
+        <td [style.background-color]="competitor.avg_effort >= 1 ? '#3cf8f8' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_style > 2 ?  '#3cf8f8' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_style > 3 ?  '#3cf8f8' : '#eaeaea' "></td>
         <td [style.background-color]="competitor.avg_style > 4 ?  '#3cf8f8' :'#eaeaea'"></td>

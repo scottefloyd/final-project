@@ -9,11 +9,14 @@ import { ChatService } from "../chat.service";
 export class JudgeComponent implements OnInit {
 
   currentPlayer: any;
+  nextCompetitor: any;
   currentCompetitors: any;
   playerScore: any;
   playerReady = false;
   gameOver: boolean = false;
+
   standBy:boolean = false;
+
 
   constructor(private chatService: ChatService) { }
 
@@ -24,8 +27,9 @@ export class JudgeComponent implements OnInit {
            
     });
 
-    this.chatService.getPlayer().subscribe(response => {
-      this.currentPlayer = response;    
+    this.chatService.getPlayer().subscribe( (currentplayer, nextplayer) => {
+      this.currentPlayer = currentplayer;   
+      this.nextCompetitor = nextplayer; 
 
       if (this.currentPlayer.name) {
             this.playerReady = true;
@@ -48,7 +52,6 @@ export class JudgeComponent implements OnInit {
    }
 
    submitScore(form) {
-    
     this.playerScore = {
       style: form.value.style,
       skill: form.value.skill,
@@ -63,6 +66,7 @@ export class JudgeComponent implements OnInit {
 
       
     form.reset();
+    
   }
 
    

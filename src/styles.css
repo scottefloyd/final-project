@@ -6,13 +6,22 @@ html {
 a {
   text-decoration: none;
 }
+
+.player-thumb img {
+  height: 85px;
+  align-self: center;
+  justify-self: center;
+}
+
 body {
   height: 100%;
   margin: 0 auto;
   padding: 0;
   font-family: "Exo 2", sans-serif;
   background: #eaeaea;
-
+}
+audience {
+  margin-top: 5%;
 }
 
 [hidden] {
@@ -52,7 +61,7 @@ h2 {
 #gameover p {
   font-size: 16px;
   font-family: 'Press Start 2P';
-  line-height: 20px;
+  line-height: 30px;
   text-align: center;
 }
 
