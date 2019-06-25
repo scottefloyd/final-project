@@ -9,6 +9,7 @@ import { ChatService } from "../chat.service";
 export class JudgeComponent implements OnInit {
 
   currentPlayer: any;
+  nextCompetitor: any;
   currentCompetitors: any;
   playerScore: any;
   playerReady = false;
@@ -23,8 +24,9 @@ export class JudgeComponent implements OnInit {
            
     });
 
-    this.chatService.getPlayer().subscribe(response => {
-      this.currentPlayer = response;    
+    this.chatService.getPlayer().subscribe( (currentplayer, nextplayer) => {
+      this.currentPlayer = currentplayer;   
+      this.nextCompetitor = nextplayer; 
 
       if (this.currentPlayer.name) {
             this.playerReady = true;

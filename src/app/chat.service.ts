@@ -51,8 +51,26 @@ export class ChatService {
   getPlayer() {
     return Observable.create(observer => {
       this.socket.on("new-player", (currentplayer, nextplayer) => {
-        observer.next(currentplayer);
+        observer.next(currentplayer, nextplayer);
+
+        console.log(nextplayer);
         
+
+      //currentplayer and nextplayer are correct!!!!
+        
+        
+      });
+      // this.socket.on("next-player", (nextplayer) => {
+      //   observer.next(nextplayer);
+      // });
+    });
+  }
+
+  getNext() {
+    return Observable.create(observer => {
+     
+      this.socket.on("next-player", (nextplayer) => {
+        observer.next(nextplayer);
       });
     });
   }

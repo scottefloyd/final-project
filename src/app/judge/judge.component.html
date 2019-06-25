@@ -1,7 +1,7 @@
 
 
 <div [hidden]="gameOver">
-<p *ngIf="playerReady"> {{ currentPlayer.name }} </p>
+<p *ngIf="playerReady"> Now judging: {{ currentPlayer.name }} </p>
 
 <form #scoreForm="ngForm" (ngSubmit)="submitScore(scoreForm)">
 

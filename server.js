@@ -30,15 +30,15 @@ let playerArray = [];
 let currentPlayer = {};
 
 io.on("connection", socket => {
-  socket.on("new-player", (message, nextplayer) => {
+  socket.on("new-player", (newplayer, nextplayer) => {
 
     let gameover = false;
     io.emit("game-over", gameover);
 
     scoreArray.push({
-      id: message.id,
-      name: message.name,
-      current_competitor: message.current_competitor,
+      id: newplayer.id,
+      name: newplayer.name,
+      current_competitor: newplayer.current_competitor,
       avg_style: 0,
       avg_skill: 0,
       avg_originality: 0,
@@ -46,18 +46,21 @@ io.on("connection", socket => {
       total: 0,
       overall_avg: 0
     });
-    io.emit("new-player", message, nextplayer);
-
+    io.emit("new-player", newplayer, nextplayer);
+    console.log(newplayer);
+    
     console.log(nextplayer);
     
-    io.emit("next-player", nextplayer);
-
+    //io.emit("next-player", nextplayer);
       
     io.emit("post-scores", scoreArray);
   });
 
   socket.on("player-scores", (scores, id, name) => {
+    
     playerArray.push(scores);
+
+    console.log(playerArray);
 
     let tot_style = 0;
     let tot_skill = 0;
@@ -97,6 +100,9 @@ io.on("connection", socket => {
             let index = scoreArray.length - 1;
 
             scoreArray.splice(index, 1, result.rows[0]);
+ 
+            console.log(scoreArray);
+            
             
             io.emit("post-scores", scoreArray);
           });
@@ -137,6 +143,7 @@ io.on("connection", socket => {
   socket.on("game-over", message => {
     pool.query("update competitors set current_competitor=$1::boolean", [true]);
     scoreArray = [];
+    playerArray = [];
 
     io.emit("post-scores", scoreArray);
     let gameover = true;

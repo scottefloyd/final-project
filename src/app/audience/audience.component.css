@@ -15,8 +15,32 @@
   margin: 12px;
 }
 
-.result-chart {
+table {
+  padding-top: 0px;
+}
 
+audience {
+  margin-top: 5%;
+}
+
+.result-chart {
+  margin-top: 0;
+}
+
+p.averagetext {
+  font: 14px;
+  font-weight: bold;
+  color: #1d8c8b;
+  margin-bottom: 7px;
+  /* width: 75px;
+  display: flex;
+  flex-direction: row; */
+  text-align: center;
+}
+
+.result-rows {
+  text-align: right;
+  padding-right: 4px;
 
 }
 
@@ -56,14 +80,6 @@ td{
   width: 10px;
 }
 
-.averagetext {
-  font: 12px;
-  font-weight: bold;
-  color: #df2a91;
-  width: 75px;
-  display: flex;
-  flex-direction: row;
-}
 
 
 
