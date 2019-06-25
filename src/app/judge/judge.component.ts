@@ -13,6 +13,7 @@ export class JudgeComponent implements OnInit {
   playerScore: any;
   playerReady = false;
   gameOver: boolean = false;
+  required: boolean;
 
   constructor(private chatService: ChatService) { }
 
@@ -40,7 +41,6 @@ export class JudgeComponent implements OnInit {
    }
 
    submitScore(form) {
-    
     this.playerScore = {
       style: form.value.style,
       skill: form.value.skill,
@@ -54,6 +54,7 @@ export class JudgeComponent implements OnInit {
 
       
     form.reset();
+    
   }
 
 }
