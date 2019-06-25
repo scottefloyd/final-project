@@ -5,8 +5,20 @@
 <p class="next">Live</p>
 </div>
 <div class="competitors">
-  <div class="playercontainer" *ngFor="let competitor of currentCompetitors; index as i" @flyInOut>
-    <div class="avatar"></div>
+
+  <!-- <div>
+    <p *ngIf="playerReady"> {{ currentPlayer.name }} </p>
+    <p *ngIf="nextReady"> {{ nextCompetitor.name }} </p> 
+
+  </div> -->
+
+
+
+  <!-- <div class="playercontainer" *ngFor="let competitor of currentCompetitors; index as i" @flyInOut>
+    <div class="avatar">
+      <img src="../assets/dancing.png" alt="">
+
+    </div>
     <p @flyInOut>{{ competitor.player_name }}</p>
-  </div>
+  </div> -->
 </div>
