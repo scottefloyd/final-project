@@ -38,12 +38,14 @@ export class ChatService {
     });
   }
 
-  addcompetitor(newCompetitor) {
-    this.socket.emit("new-competitor", newCompetitor);
+  addcompetitor(newCompetitor, avatar) {
+    this.socket.emit("new-competitor", newCompetitor, avatar);
   }
 
   sendPlayer(player, nextplayer) {
     this.socket.emit("new-player", player, nextplayer);
+    console.log(player);
+    
   }
 
   public getMessages() {
