@@ -43,6 +43,7 @@ const appRoutes: Routes = [
     ResultsComponent,
     PlayerQueueComponent
   ],
+  
   imports: [
     BrowserModule,
     FormsModule,

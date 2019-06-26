@@ -22,6 +22,7 @@ import {
       transition("*=>void", [animate(100)])
     ])
   ]
+
 })
 export class PlayerQueueComponent implements OnInit {
 
@@ -35,12 +36,15 @@ export class PlayerQueueComponent implements OnInit {
 
   //@Input() nextCompetitor: any;
 
+  
 
   constructor(private chatService: ChatService) {
     this.chatService.displayCurrentCompetitors().subscribe(response => {
       this.currentCompetitors = response;
     });
   }
+
+
 
   ngOnInit() {
     this.chatService.getNext().subscribe(response => {

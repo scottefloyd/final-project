@@ -15,6 +15,8 @@ export class CompetitorComponent implements OnInit {
   constructor(private chatService: ChatService) { }
 
   
+  
+
   ngOnInit() {
 
     this.chatService.getCurrentPlayers().subscribe(response => {
@@ -36,4 +38,7 @@ export class CompetitorComponent implements OnInit {
     
   }
 
+
+
 }
+

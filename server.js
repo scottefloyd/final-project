@@ -57,7 +57,7 @@ io.on("connection", socket => {
     
     playerArray.push(scores);
 
-    console.log(playerArray);
+    // console.log(playerArray);
 
     let tot_style = 0;
     let tot_skill = 0;
@@ -134,15 +134,49 @@ io.on("connection", socket => {
   });
 });
 
+
 io.on("connection", socket => {
   socket.on("game-over", message => {
-    pool.query("update competitors set current_competitor=$1::boolean", [true]);
+    pool.query("update competitors set current_competitor=$1::boolean", [true]).then(() => {
+      function sortScores(a, b){
+      
+        return b.overall_avg - a.overall_avg;
+      }
+  
+      let totalScoreArray = scoreArray.sort(sortScores);
+
+      io.emit("total-scores", totalScoreArray);
+
+      // console.log("JSON", JSON.stringify(totalScoreArray));
+    pool
+      .query(
+        "update game set scores=$1::json where id=1",
+        [
+          JSON.stringify(totalScoreArray)
+        ]
+      ).then(() => {
+        pool 
+        .query(
+          "select * from game"
+          
+        )
+        .then(result => {
+          result.rows[0].scores;
+
+          io.emit("final-scores", result.rows[0].scores);
+        });
+      })
+
+      
+
+    totalScoreArray = [];
     scoreArray = [];
     playerArray = [];
 
     io.emit("post-scores", scoreArray);
     let gameover = true;
     io.emit("game-over", gameover);
+    });  
   });
 });
 

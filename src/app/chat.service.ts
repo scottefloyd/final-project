@@ -21,6 +21,7 @@ export class ChatService {
   allScoreObjects: any[] = [];
   judgeCounter: number = 0;
   averageScore: any;
+  fina
 
   private url = "http://localhost:3000";
   private socket;
@@ -157,5 +158,15 @@ export class ChatService {
   setTotalScores(scores) {
     this.totalScores = scores;
   }
+
+  getAllAverages() {
+    return Observable.create(observer => {
+      this.socket.on("final-scores", message => {
+        observer.next(message);
+      });
+    });
+  
+  }
+
 
 }

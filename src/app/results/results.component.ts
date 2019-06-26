@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from "../chat.service";
 
 @Component({
   selector: 'app-results',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
+  highscores:any = [];
 
-  constructor() { }
-
+  constructor(private chatService: ChatService) {}
+    
   ngOnInit() {
+    this.chatService.getAllAverages().subscribe(response => {
+      this.highscores = response;
+      console.log(this.highscores);
+    });
+    
+
   }
 
 }

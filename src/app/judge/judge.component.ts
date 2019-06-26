@@ -58,5 +58,6 @@ export class JudgeComponent implements OnInit {
     form.reset();
     
   }
+  
 
 }
