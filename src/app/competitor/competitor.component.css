@@ -8,9 +8,18 @@
 section {
   height: 215px;
   margin-top: 25px;
-  display: flex;
+  display: grid;
+  width: 300px;
+ 
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 100px, 30px, 100px, 30px;
+  justify-items: center;
   justify-content: center;
+  padding: 5px;
+  margin-bottom: 30px;
+
 }
+
 
 button {
   width: 270px;
@@ -21,6 +30,8 @@ button {
   height: 50px;
   font-size: 22px;
   margin-bottom: 25px;
+  justify-content: center;
+  transform:translateX(25px);
 }
 
 form {
@@ -41,6 +52,7 @@ input {
   font-size: 18px;
   padding: 8px;
   border: 1px solid grey;
+  justify-content: center;
   
 }
 
@@ -48,4 +60,13 @@ label {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+}
+
+input[type="radio"] {
+  transform: scale(.5);
+}
+
+
+h2 {
+  transform: translateX(-10px);
 }

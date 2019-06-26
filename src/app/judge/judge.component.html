@@ -3,7 +3,8 @@
 <div [hidden]="gameOver">
 
 <div [hidden]="standBy">
-<p *ngIf="playerReady"> Now judging: {{ currentPlayer.name }} </p>
+<p *ngIf="playerReady" class ="nowJudging"> Now judging: {{ currentPlayer.name }} </p>
+
 
 
 <form #scoreForm="ngForm" (ngSubmit)="submitScore(scoreForm)"  >
