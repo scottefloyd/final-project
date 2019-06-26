@@ -5,6 +5,26 @@
   height: 100%;
 }
 
+section {
+  height: 215px;
+  margin-top: 25px;
+  display: grid;
+  width: 300px;
+ 
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 100px, 30px, 100px, 30px;
+  justify-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-bottom: 30px;
+
+}
+
+.avat {
+  display: grid;
+}
+
+
 button {
   width: 270px;
   border: none;
@@ -14,6 +34,8 @@ button {
   height: 50px;
   font-size: 22px;
   margin-bottom: 25px;
+  justify-content: center;
+  transform:translateX(25px);
 }
 
 form {
@@ -22,20 +44,41 @@ form {
   grid-column-end: 3;
   grid-row: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+
 }
 
-input {
+input.name-input {
   height: 35px;
   width: 270px;
   border-radius: 8px;
   font-size: 18px;
   padding: 8px;
   border: 1px solid grey;
-  
+  justify-content: center;
+}
+
+.avatar-inputs {
+
+  display: grid;
+}
+
+input.input-avatar {
+  justify-self: center;
 }
 
 label {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+}
+
+input[type="radio"] {
+  transform: scale(.8);
+}
+
+
+h2 {
+  transform: translateX(-10px);
 }

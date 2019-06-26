@@ -26,15 +26,23 @@ io.on("connection", () => {
 });
 
 let scoreArray = [];
-let playerArray = [];
+let playerArray = []; 
 let currentPlayer = {};
 
 io.on("connection", socket => {
   socket.on("new-player", (newplayer, nextplayer) => {
     playerArray = [];
+    
     let gameover = false;
     io.emit("game-over", gameover);
 
+    let standBy = false;
+    io.emit("stand-by", standBy);
+
+    let playerQueue = true;
+    io.emit("player-queue", playerQueue);
+    
+  
     scoreArray.push({
       id: newplayer.id,
       name: newplayer.name,
@@ -44,7 +52,8 @@ io.on("connection", socket => {
       avg_originality: 0,
       avg_effort: 0,
       total: 0,
-      overall_avg: 0
+      overall_avg: 0,
+      avatar: newplayer.avatar
     });
     io.emit("new-player", newplayer, nextplayer);
     
@@ -56,8 +65,6 @@ io.on("connection", socket => {
   socket.on("player-scores", (scores, id, name) => {
     
     playerArray.push(scores);
-
-    // console.log(playerArray);
 
     let tot_style = 0;
     let tot_skill = 0;
@@ -110,11 +117,14 @@ io.on("connection", socket => {
   //   io.emit("total-scores", message);
   // });
 
-  socket.on("new-competitor", newCompetitor => {
+  socket.on("new-competitor", (newCompetitor, avatar) => {
+    let nameSubmited = true;
+    io.emit("name-submit", nameSubmited);
+
     pool
       .query(
-        "insert into competitors (name, current_competitor) VALUES ($1::text, $2::boolean)",
-        [newCompetitor, true]
+        "insert into competitors (name, current_competitor, avatar) VALUES ($1::text, $2::boolean, $3::text)",
+        [newCompetitor, true, avatar]
       )
       .then(() => {
         pool
@@ -174,9 +184,17 @@ io.on("connection", socket => {
     playerArray = [];
 
     io.emit("post-scores", scoreArray);
+    
     let gameover = true;
     io.emit("game-over", gameover);
+
     });  
+
+    let playerQueue = false;
+    io.emit("player-queue", playerQueue);
+    let nameSubmited = false;
+    io.emit("name-submit", nameSubmited);
+
   });
 });
 
@@ -191,6 +209,8 @@ io.on("connection", socket => {
     io.emit("load-competitors", message);
   });
 });
+
+
 
 server.listen(port, () => {
   console.log(`started on port: ${port}`);

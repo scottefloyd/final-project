@@ -11,8 +11,8 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
     trigger('flyInOut', [
       state('in', style({ transform: `translateX(0)`})),
       transition('void =>*', [
-        style({transform:'translateX(25px)'}),
-        animate(2000)
+        style({transform:'translateX(250px)'}),
+        animate(1000)
       ]),
       transition('*=>void', [
         animate(100)
@@ -31,8 +31,14 @@ export class OrganizerComponent implements OnInit {
   playerCount: number = 1;
   showstop: boolean = true;
   showstart: boolean = true;
+
+  standby: boolean = false;
+  
+  
+
   playerReady: boolean = false;
   nextReady: boolean = false;
+
 
   currentScores: any[] = [];
   message: any;
@@ -43,6 +49,7 @@ export class OrganizerComponent implements OnInit {
 
     this.chatService.getCurrentPlayers().subscribe(response => {
       this.currentCompetitors = response;   
+      console.log(this.currentCompetitors);
     });
 
   }
@@ -63,6 +70,7 @@ export class OrganizerComponent implements OnInit {
     if (this.currentPlayer.name) {
       this.playerReady = true;
   }
+
   }
 
   
@@ -88,6 +96,8 @@ export class OrganizerComponent implements OnInit {
   }
     
     this.playerCount++;
+   
+    
 
   }
 

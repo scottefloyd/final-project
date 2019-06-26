@@ -1,10 +1,29 @@
 <!-- <h2>Player Queue</h2> -->
 
-<div class="decknext">
-<p class="deck">On deck</p>
+<!-- <div class="decknext"> -->
+<!-- <p class="deck">On deck</p>
 <p class="next">Live</p>
 </div>
-<div class="competitors">
+<div class="competitors"> -->
+
+    <section>
+        <div *ngIf="playerReady" class="current-next-player" @flyInOut>
+          <div class="comp-name">ON DECK</div>
+          <div class="comp-name">LIVE</div>
+          <div *ngIf="nextReady" class="player-thumb">
+            <img src="{{ nextCompetitor.avatar }}" alt="" />
+          </div>
+          <div *ngIf="playerReady" class="player-thumb">
+            <img src="{{ currentPlayer.avatar }}" alt="" />
+          </div>
+          <div class="comp-name">
+            <p *ngIf="nextReady">{{ nextCompetitor.name }}</p>
+          </div>
+          <div class="comp-name">
+            <p *ngIf="playerReady">{{ currentPlayer.name }}</p>
+          </div>
+        </div>
+      </section>
 
 
   
@@ -39,4 +58,4 @@
     </div>
     <p @flyInOut>{{ competitor.player_name }}</p>
   </div> -->
-</div>
+<!-- </div> -->

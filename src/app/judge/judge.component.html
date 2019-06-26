@@ -1,7 +1,11 @@
 
 
 <div [hidden]="gameOver">
-<p *ngIf="playerReady"> Now judging: {{ currentPlayer.name }} </p>
+
+<div [hidden]="standBy">
+<p *ngIf="playerReady" class ="nowJudging"> Now judging: {{ currentPlayer.name }} </p>
+
+
 
 <form #scoreForm="ngForm" (ngSubmit)="submitScore(scoreForm)"  >
 
@@ -34,6 +38,13 @@
 <button [disabled]="!scoreForm.value.style || !scoreForm.value.skill || !scoreForm.value.effort || !scoreForm.value.originality ">Submit</button>
 </form>
 </div>
+
+</div>
+
+<div id="gameover" *ngIf="standBy">
+  <p>Please stand by for next dancer</p>
+</div>
+
 <div id="gameover" *ngIf="gameOver">
     <p>Thank you for participating in the Boogie Battle!</p>
     <a class="end-link" routerLink="/results" routerLinkActive="active">View Scores</a>

@@ -1,18 +1,112 @@
+<div id="competitor" [hidden]="gameOver">
+  <form
+    #nameForm="ngForm"
+    (ngSubmit)="addNewCompetitor(nameForm)"
+    [hidden]="nameSubmited"
+  >
+    <h2>Enter your name:</h2>
+    <input class="name-input" type="text" ngModel name="name" />
+    <section class="avatar-inputs">
+      <div class="avat">
+        <img class="one" src="../assets/mandancing1.png" alt="" />
+        <input
+          class="input-avatar"
+          type="radio"
+          name="avatar"
+          ngModel
+          value="../assets/mandancing1.png"
+        />
+      </div>
 
-<div id="competitor">
-<form #nameForm="ngForm" (ngSubmit)="addNewCompetitor(nameForm)" [hidden]="gameOver">
-  <h2>Enter your name: </h2>
-  <input type="text" ngModel name="name" />
-  <section>
+      <div class="avat">
+        <img class="one" src="../assets/mandancing2.png" alt="" />
+        <input
+        class="input-avatar"
+          type="radio"
+          name="avatar"
+          ngModel
+          value="../assets/mandancing2.png"
+        />
+      </div>
+
+      <div class="avat">
+        <img src="../assets/dancing.png" alt="" />
+        <input
+        class="input-avatar"
+          type="radio"
+          name="avatar"
+          ngModel
+          value="../assets/dancing.png"
+        />
+      </div>
+
+      <div class="avat">
+        <img src="../assets/womendancing1.png" alt="" />
+        <input
+        class="input-avatar"
+          type="radio"
+          name="avatar"
+          ngModel
+          value="../assets/womendancing1.png"
+        />
+      </div>
+
+      <div class="avat">
+        <img src="../assets/womendancing2.png" alt="" />
+        <input
+        class="input-avatar"
+          type="radio"
+          name="avatar"
+          ngModel
+          value="../assets/womendancing2.png"
+        />
+      </div>
+
+      <div class="avat">
+        <img src="../assets/unicorn.png" alt="" />
+        <input
+        class="input-avatar"
+          type="radio"
+          name="avatar"
+          ngModel
+          value="../assets/unicorn.png"
+        />
+      </div>
+
+      <!-- <div *ngIf="playerQueue">
+        <img src="../assets/disco-ball.png" alt="" />
+        <player-queue></player-queue>
+      </div> -->
+    </section>
+    <button>Join the Boogie Battle</button>
+  </form>
+
+  <div id="gameover" *ngIf="nameSubmited">
+    <p>Thanks for joining the Boogie Down! Please wait your turn!</p>
     <player-queue></player-queue>
-  </section>
-  <button>Join the Boogie Battle </button>
-</form>
+  </div>
+</div>
+
+<!-- <div id="competitor">
+  <form
+    #nameForm="ngForm"
+    (ngSubmit)="addNewCompetitor(nameForm)"
+    [hidden]="gameOver"
+  >
+    <h2>Enter your name:</h2>
+    <input type="text" ngModel name="name" />
+    
+    <section>
+    <player-queue></player-queue>
+    </section>
+  
+    <button>Join the Boogie Battle</button>
+  </form> -->
 
 <div id="gameover" *ngIf="gameOver">
-    <p>Thank you for participating in the Boogie Battle!</p>
-    <a class="end-link" routerLink="/results" routerLinkActive="active">View Scores</a>
-    
-  </div>
+  <p>Thank you for participating in the Boogie Battle!</p>
 
+  <a class="end-link" routerLink="/results" routerLinkActive="active"
+    >View Scores</a
+  >
 </div>

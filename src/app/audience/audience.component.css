@@ -8,11 +8,11 @@
 
 .result-thumbnail {
   justify-self: center;
-  border-radius: 50%;
-  background-color: gray;
   height: 100px;
   width: 100px;
   margin: 12px;
+  align-self: center;
+  text-align: center;
 }
 
 table {
@@ -26,6 +26,7 @@ audience {
 .result-chart {
   margin-top: 0;
 }
+
 
 p.averagetext {
   font: 14px;
@@ -42,7 +43,7 @@ p.averagetext {
   text-align: right;
   padding-right: 4px;
 
-}
+} 
 
 .result-avg {
   display: flex;
@@ -55,6 +56,12 @@ p.averagetext {
   width: 80px;
   height: 80px;
   align-items: center;
+
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid pink;
+  align-content: center; */
 }
 
 .over-avg {

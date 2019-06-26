@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from "../chat.service";
-import { GoogleChartComponent } from 'angular-google-charts';
 
 @Component({
   selector: 'audience',
@@ -15,18 +14,17 @@ export class AudienceComponent implements OnInit {
   playerReady: any = false;
   gameOver: boolean = false;
 
-
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
 
-    this.chatService.getPlayer().subscribe((currentplayer, nextplayer) => {
-      this.currentPlayer = currentplayer, 
-      this.nextCompetitor = nextplayer;
+    this.chatService.getPlayer().subscribe((player) => {
+      this.currentPlayer = player.currentplayer, 
+      this.nextCompetitor = player.nextplayer;
     });
 
     this.chatService.getMessages().subscribe(message => {
-      this.competitors = message;
+      this.competitors = message;      
       
       if (this.competitors) {
         this.playerReady = true;

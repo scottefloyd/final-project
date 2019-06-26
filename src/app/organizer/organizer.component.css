@@ -3,8 +3,30 @@
 #organizer-section {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 3fr 1fr 1fr;
+  grid-template-rows: 1fr 75px 3fr 1fr 1fr;
   height: 100%;
+}
+section {
+  text-align: center;
+}
+
+.current-next-player {
+  display: grid;
+  grid-template-columns: 120px 120px;
+  grid-template-rows: 40px 80px 40px;
+}
+
+.player-thumb, .comp-name {
+  align-self: center;
+  justify-self: center;
+}
+
+.comp-name {
+  height: 40px;
+}
+
+.player-thumb img {
+  height: 85px;
 }
 
 #organizer-section > * {
@@ -46,5 +68,4 @@
   width: 200px;
 
 }
-
 
