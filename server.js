@@ -32,6 +32,7 @@ let currentPlayer = {};
 io.on("connection", socket => {
   socket.on("new-player", (newplayer, nextplayer) => {
     playerArray = [];
+    
     let gameover = false;
     io.emit("game-over", gameover);
 
@@ -63,8 +64,6 @@ io.on("connection", socket => {
   socket.on("player-scores", (scores, id, name) => {
     
     playerArray.push(scores);
-
-    console.log(playerArray);
 
     let tot_style = 0;
     let tot_skill = 0;
@@ -121,8 +120,6 @@ io.on("connection", socket => {
     let nameSubmited = true;
     io.emit("name-submit", nameSubmited);
 
-  
-
     pool
       .query(
         "insert into competitors (name, current_competitor) VALUES ($1::text, $2::boolean)",
@@ -151,8 +148,11 @@ io.on("connection", socket => {
     pool.query("update competitors set current_competitor=$1::boolean", [true]);
     scoreArray = [];
     playerArray = [];
+    console.log(scoreArray);
+    
 
     io.emit("post-scores", scoreArray);
+    
     let gameover = true;
     io.emit("game-over", gameover);
     let playerQueue = false;

@@ -27,9 +27,13 @@ export class JudgeComponent implements OnInit {
            
     });
 
-    this.chatService.getPlayer().subscribe( (currentplayer, nextplayer) => {
-      this.currentPlayer = currentplayer;   
-      this.nextCompetitor = nextplayer; 
+    this.chatService.getPlayer().subscribe( (player) => {
+      this.currentPlayer = player.currentplayer;   
+      this.nextCompetitor = player.nextplayer; 
+
+      // console.log(currentplayer);
+      // console.log(nextplayer);
+      
 
       if (this.currentPlayer.name) {
             this.playerReady = true;
