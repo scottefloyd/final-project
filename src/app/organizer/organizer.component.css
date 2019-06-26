@@ -65,3 +65,8 @@
   width: 200px;
 
 }
+
+.discoball {
+  transform: translateX(85px);
+  
+}
