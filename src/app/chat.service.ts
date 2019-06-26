@@ -44,15 +44,13 @@ export class ChatService {
 
   sendPlayer(player, nextplayer) {
     this.socket.emit("new-player", player, nextplayer);
-    console.log(player);
-    
   }
 
   public getMessages() {
     return Observable.create(observer => {
       this.socket.on("post-scores", message => {
         observer.next(message);
-    
+ 
       });
     });
   }
@@ -61,12 +59,8 @@ export class ChatService {
     return Observable.create(observer => {
       this.socket.on("new-player", (currentplayer, nextplayer) => {
         observer.next({currentplayer, nextplayer});
-        
-        
       });
-      // this.socket.on("next-player", (nextplayer) => {
-      //   observer.next(nextplayer);
-      // });
+
     });
   }
 
@@ -121,8 +115,6 @@ export class ChatService {
   }
 
 
-  /////////////////////////////////////////////////////////////////////////////
-
   getCompetitors() {
     return this.http.get(`${this.url}/api/competitors`, {
       responseType: "json"
@@ -137,13 +129,6 @@ export class ChatService {
     });
   }
 
-  // public getClearScores() {
-  //   return Observable.create(observer => {
-  //     this.socket.on("clear-scores", message => {
-  //       observer.next(message);
-  //     });
-  //   });
-  // }
 
   getAllScores(allscores) {
     this.allPlayerScores = allscores;
@@ -152,8 +137,6 @@ export class ChatService {
   getCurrentScores(scores) {
     this.currentScores = scores;
   }
-
-
 
   loadCurrentCompetitors(competitors) {
     this.socket.emit("load-competitors", competitors);
@@ -171,6 +154,5 @@ export class ChatService {
     this.totalScores = scores;
   }
 
-  
 
 }

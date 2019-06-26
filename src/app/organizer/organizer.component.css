@@ -3,8 +3,11 @@
 #organizer-section {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 3fr 1fr 1fr;
+  grid-template-rows: 1fr 75px 3fr 1fr 1fr;
   height: 100%;
+}
+section {
+  text-align: center;
 }
 
 .current-next-player {
@@ -67,6 +70,6 @@
 }
 
 .discoball {
-  transform: translateX(85px);
+  /* transform: translateX(85px); */
   
 }

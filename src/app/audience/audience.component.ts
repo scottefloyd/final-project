@@ -24,9 +24,7 @@ export class AudienceComponent implements OnInit {
     });
 
     this.chatService.getMessages().subscribe(message => {
-      this.competitors = message;
-      console.log(this.competitors);
-      
+      this.competitors = message;      
       
       if (this.competitors) {
         this.playerReady = true;

@@ -5,11 +5,12 @@
     [hidden]="nameSubmited"
   >
     <h2>Enter your name:</h2>
-    <input type="text" ngModel name="name" />
-    <section>
-      <div>
+    <input class="name-input" type="text" ngModel name="name" />
+    <section class="avatar-inputs">
+      <div class="avat">
         <img class="one" src="../assets/mandancing1.png" alt="" />
         <input
+          class="input-avatar"
           type="radio"
           name="avatar"
           ngModel
@@ -17,9 +18,10 @@
         />
       </div>
 
-      <div>
+      <div class="avat">
         <img class="one" src="../assets/mandancing2.png" alt="" />
         <input
+        class="input-avatar"
           type="radio"
           name="avatar"
           ngModel
@@ -27,9 +29,10 @@
         />
       </div>
 
-      <div class="one">
+      <div class="avat">
         <img src="../assets/dancing.png" alt="" />
         <input
+        class="input-avatar"
           type="radio"
           name="avatar"
           ngModel
@@ -37,9 +40,10 @@
         />
       </div>
 
-      <div class="one">
+      <div class="avat">
         <img src="../assets/womendancing1.png" alt="" />
         <input
+        class="input-avatar"
           type="radio"
           name="avatar"
           ngModel
@@ -47,9 +51,10 @@
         />
       </div>
 
-      <div class="one">
+      <div class="avat">
         <img src="../assets/womendancing2.png" alt="" />
         <input
+        class="input-avatar"
           type="radio"
           name="avatar"
           ngModel
@@ -57,9 +62,10 @@
         />
       </div>
 
-      <div class="one">
+      <div class="avat">
         <img src="../assets/unicorn.png" alt="" />
         <input
+        class="input-avatar"
           type="radio"
           name="avatar"
           ngModel
@@ -67,10 +73,10 @@
         />
       </div>
 
-      <div *ngIf="playerQueue">
+      <!-- <div *ngIf="playerQueue">
         <img src="../assets/disco-ball.png" alt="" />
         <player-queue></player-queue>
-      </div>
+      </div> -->
     </section>
     <button>Join the Boogie Battle</button>
   </form>

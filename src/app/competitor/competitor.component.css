@@ -20,6 +20,10 @@ section {
 
 }
 
+.avat {
+  display: grid;
+}
+
 
 button {
   width: 270px;
@@ -45,7 +49,7 @@ form {
 
 }
 
-input {
+input.name-input {
   height: 35px;
   width: 270px;
   border-radius: 8px;
@@ -53,7 +57,15 @@ input {
   padding: 8px;
   border: 1px solid grey;
   justify-content: center;
-  
+}
+
+.avatar-inputs {
+
+  display: grid;
+}
+
+input.input-avatar {
+  justify-self: center;
 }
 
 label {
@@ -63,7 +75,7 @@ label {
 }
 
 input[type="radio"] {
-  transform: scale(.5);
+  transform: scale(.8);
 }
 
 
