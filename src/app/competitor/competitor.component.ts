@@ -50,7 +50,9 @@ export class CompetitorComponent implements OnInit {
   addNewCompetitor(form) {
 
     
-      this.chatService.addcompetitor(form.value.name);
+      this.chatService.addcompetitor(form.value.name, form.value.avatar);
+
+      
       this.nameSubmited = true;
 
     

@@ -7,6 +7,31 @@
   <h2>Enter your name:</h2>
   <input type="text" ngModel name="name">
   <section>
+
+    <div>
+      <img src="../assets/dancing.png" alt="">
+      <input
+      type="radio"
+      name="avatar"
+      ngModel
+      value="../assets/dancing.png"
+    />
+    </div>
+
+    <div>
+      <img src="../assets/breakdance.png" alt="">
+        <input
+        type="radio"
+        name="avatar"
+        ngModel
+        value="../assets/breakdance.png"
+      />
+    </div>
+
+    
+
+
+
     <div *ngIf="playerQueue">
       <player-queue></player-queue>
      </div>

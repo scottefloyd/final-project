@@ -11,10 +11,10 @@
           <div class="comp-name">ON DECK</div>
           <div class="comp-name">LIVE</div>
           <div *ngIf="nextReady" class="player-thumb">
-            <img src="../assets/breakdance.png" alt="" />
+            <img src="{{ nextCompetitor.avatar }}" alt="" />
           </div>
           <div *ngIf="playerReady" class="player-thumb">
-            <img src="../assets/breakdance.png" alt="" />
+            <img src="{{ currentPlayer.avatar }}" alt="" />
           </div>
           <div class="comp-name">
             <p *ngIf="nextReady">{{ nextCompetitor.name }}</p>

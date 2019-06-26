@@ -26,7 +26,7 @@ io.on("connection", () => {
 });
 
 let scoreArray = [];
-let playerArray = [];
+let playerArray = []; 
 let currentPlayer = {};
 
 io.on("connection", socket => {
@@ -116,14 +116,14 @@ io.on("connection", socket => {
   //   io.emit("total-scores", message);
   // });
 
-  socket.on("new-competitor", newCompetitor => {
+  socket.on("new-competitor", (newCompetitor, avatar) => {
     let nameSubmited = true;
     io.emit("name-submit", nameSubmited);
 
     pool
       .query(
-        "insert into competitors (name, current_competitor) VALUES ($1::text, $2::boolean)",
-        [newCompetitor, true]
+        "insert into competitors (name, current_competitor, avatar) VALUES ($1::text, $2::boolean, $3::text)",
+        [newCompetitor, true, avatar]
       )
       .then(() => {
         pool
