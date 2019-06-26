@@ -6,6 +6,14 @@
  
   <h2>Enter your name:</h2>
   <input type="text" ngModel name="name">
+  <section>
+    <div *ngIf="playerQueue">
+      <player-queue></player-queue>
+     </div>
+
+     <div *ngIf="!playerQueue"><img src="../assets/disco-ball.png" alt=""></div>
+
+  </section>
   <button>Join the Boogie Battle </button>
 </form> 
 
@@ -15,9 +23,7 @@
   <p>Thanks for joining the Boogie Down! Please wait your turn!</p>
 </div>
 
-<div *ngIf="playerQueue">
- <player-queue></player-queue>
-</div>
+
  
 
 </div>
