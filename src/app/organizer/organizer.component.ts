@@ -49,7 +49,7 @@ export class OrganizerComponent implements OnInit {
 
     this.chatService.getCurrentPlayers().subscribe(response => {
       this.currentCompetitors = response;   
-      console.log(this.currentCompetitors);
+      //console.log(this.currentCompetitors);
     });
 
   }

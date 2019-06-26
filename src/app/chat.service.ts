@@ -39,24 +39,26 @@ export class ChatService {
   }
 
   addcompetitor(newCompetitor) {
-   // console.log(newCompetitor);
-
     this.socket.emit("new-competitor", newCompetitor);
   }
 
   sendPlayer(player, nextplayer) {
     this.socket.emit("new-player", player, nextplayer);
-    
+  }
 
+  public getMessages() {
+    return Observable.create(observer => {
+      this.socket.on("post-scores", message => {
+        observer.next(message);
+    
+      });
+    });
   }
 
   getPlayer() {
     return Observable.create(observer => {
       this.socket.on("new-player", (currentplayer, nextplayer) => {
         observer.next({currentplayer, nextplayer});
-      
-
-      //currentplayer and nextplayer are correct!!!!
         
         
       });
@@ -72,23 +74,12 @@ export class ChatService {
       this.socket.on("next-player", (nextplayer) => {
         observer.next(nextplayer);
 
-        // console.log(nextplayer);
-        
       });
     });
   }
 
   public sendScore(score, id, name) {
     this.socket.emit("player-scores", score, id, name);
-  }
-
-
-  public getMessages() {
-    return Observable.create(observer => {
-      this.socket.on("post-scores", message => {
-        observer.next(message);
-      });
-    });
   }
 
   stopComp() {
@@ -144,13 +135,13 @@ export class ChatService {
     });
   }
 
-  public getClearScores() {
-    return Observable.create(observer => {
-      this.socket.on("clear-scores", message => {
-        observer.next(message);
-      });
-    });
-  }
+  // public getClearScores() {
+  //   return Observable.create(observer => {
+  //     this.socket.on("clear-scores", message => {
+  //       observer.next(message);
+  //     });
+  //   });
+  // }
 
   getAllScores(allscores) {
     this.allPlayerScores = allscores;
@@ -160,22 +151,7 @@ export class ChatService {
     this.currentScores = scores;
   }
 
-  updateScore(score) {
-    //console.log(score);
 
-    return this.http.put(`${this.url}/api/competitors/${score.id}`, score, {
-      responseType: "json"
-    });
-  }
-
-  //this is not currently sending to Audience
-  public getScoreData() {
-    return Observable.create(observer => {
-      this.socket.on("current-scores", message => {
-        observer.next(message);
-      });
-    });
-  }
 
   loadCurrentCompetitors(competitors) {
     this.socket.emit("load-competitors", competitors);

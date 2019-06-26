@@ -13,7 +13,6 @@ export class CompetitorComponent implements OnInit {
   competitors: any;
   nameSubmited: boolean = false;
   currentCompetitors: any;
-  nameSubmited: boolean = false;
   playerQueue:boolean = false;
 
   constructor(private chatService: ChatService) { }

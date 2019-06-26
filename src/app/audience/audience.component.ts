@@ -18,13 +18,15 @@ export class AudienceComponent implements OnInit {
 
   ngOnInit() {
 
-    this.chatService.getPlayer().subscribe((currentplayer, nextplayer) => {
-      this.currentPlayer = currentplayer, 
-      this.nextCompetitor = nextplayer;
+    this.chatService.getPlayer().subscribe((player) => {
+      this.currentPlayer = player.currentplayer, 
+      this.nextCompetitor = player.nextplayer;
     });
 
     this.chatService.getMessages().subscribe(message => {
       this.competitors = message;
+      console.log(this.competitors);
+      
       
       if (this.competitors) {
         this.playerReady = true;
