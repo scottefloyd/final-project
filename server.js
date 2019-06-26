@@ -144,9 +144,42 @@ io.on("connection", socket => {
   });
 });
 
+
 io.on("connection", socket => {
   socket.on("game-over", message => {
-    pool.query("update competitors set current_competitor=$1::boolean", [true]);
+    pool.query("update competitors set current_competitor=$1::boolean", [true]).then(() => {
+      function sortScores(a, b){
+      
+        return b.overall_avg - a.overall_avg;
+      }
+  
+      let totalScoreArray = scoreArray.sort(sortScores);
+
+      io.emit("total-scores", totalScoreArray);
+
+      // console.log("JSON", JSON.stringify(totalScoreArray));
+    pool
+      .query(
+        "update game set scores=$1::json where id=1",
+        [
+          JSON.stringify(totalScoreArray)
+        ]
+      ).then(() => {
+        pool 
+        .query(
+          "select * from game"
+          
+        )
+        .then(result => {
+          result.rows[0].scores;
+
+          io.emit("final-scores", result.rows[0].scores);
+        });
+      })
+
+      
+
+    totalScoreArray = [];
     scoreArray = [];
     playerArray = [];
 
@@ -154,10 +187,14 @@ io.on("connection", socket => {
     
     let gameover = true;
     io.emit("game-over", gameover);
+
+    });  
+
     let playerQueue = false;
     io.emit("player-queue", playerQueue);
     let nameSubmited = false;
     io.emit("name-submit", nameSubmited);
+
   });
 });
 

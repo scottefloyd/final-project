@@ -13,6 +13,7 @@ describe('JudgeComponent', () => {
     .compileComponents();
   }));
 
+  
   beforeEach(() => {
     fixture = TestBed.createComponent(JudgeComponent);
     component = fixture.componentInstance;

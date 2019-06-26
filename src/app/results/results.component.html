@@ -1,3 +1,8 @@
-<p>
-  results works!
-</p>
+<h1>Overall Results</h1>
+<div *ngFor="let score of highscores;index as i">
+    <p class="name">{{i + 1 + "." + " " + score.name}}</p>
+    <p class="score">{{score.overall_avg}}</p>
+  </div>
+
+
+  

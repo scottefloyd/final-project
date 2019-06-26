@@ -63,4 +63,14 @@ routes.delete("/competitors/:id", (req, res) => {
     });
 });
 
+// function selectAllScores(res) {
+//   pool
+//     .query("select * from game order by desc ")
+//     .then(result => res.json(result.rows[0].score));
+// }
+
+// routes.get("/competitors", (req, res) => {
+//   selectAllScores(res);
+  
+// });
 module.exports = routes;

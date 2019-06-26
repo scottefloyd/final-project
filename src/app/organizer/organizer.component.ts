@@ -73,6 +73,8 @@ export class OrganizerComponent implements OnInit {
 
   }
 
+  
+
   stopComp() {
     this.chatService.stopComp();
     this.showstop = !this.showstop;
@@ -85,9 +87,9 @@ export class OrganizerComponent implements OnInit {
     this.nextCompetitor = this.currentCompetitors[this.playerCount + 1];
     this.chatService.sendPlayer(this.currentPlayer, this.nextCompetitor);
 
-    if(this.nextCompetitor.name) {
-      this.nextReady = true;
-    }
+    // if(this.nextCompetitor.name) {
+    //   this.nextReady = true;
+    // }
 
     if (this.currentPlayer.name) {
       this.playerReady = true;

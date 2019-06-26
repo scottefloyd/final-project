@@ -33,6 +33,7 @@
     
  }
 
+
 p {
     font-size: 16px;
 }
@@ -48,6 +49,9 @@ p {
     
 }
 
+
+
+
 .decknext {
     display: flex;
     flex-direction: row;
@@ -56,6 +60,7 @@ p {
     
 }
 
+
 .next{
     transform:translateX(102px);
 }
@@ -63,6 +68,8 @@ p {
 h2{
    text-align: center;
 }
+
+
 
 
 

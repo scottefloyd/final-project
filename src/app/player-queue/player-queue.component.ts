@@ -22,6 +22,7 @@ import {
       transition("*=>void", [animate(100)])
     ])
   ]
+
 })
 export class PlayerQueueComponent implements OnInit {
 
@@ -34,8 +35,11 @@ export class PlayerQueueComponent implements OnInit {
 
   //@Input() nextCompetitor: any;
 
+  
 
   constructor(private chatService: ChatService) {}
+
+
 
   ngOnInit() {
 
