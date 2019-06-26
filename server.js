@@ -42,7 +42,7 @@ io.on("connection", socket => {
     let playerQueue = true;
     io.emit("player-queue", playerQueue);
     
-
+  
     scoreArray.push({
       id: newplayer.id,
       name: newplayer.name,
@@ -52,7 +52,8 @@ io.on("connection", socket => {
       avg_originality: 0,
       avg_effort: 0,
       total: 0,
-      overall_avg: 0
+      overall_avg: 0,
+      avatar: newplayer.avatar
     });
     io.emit("new-player", newplayer, nextplayer);
     
@@ -148,8 +149,6 @@ io.on("connection", socket => {
     pool.query("update competitors set current_competitor=$1::boolean", [true]);
     scoreArray = [];
     playerArray = [];
-    console.log(scoreArray);
-    
 
     io.emit("post-scores", scoreArray);
     
